@@ -1,0 +1,14 @@
+17:09:02.501 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarting,55] - Starting WechatonlinevotingApplication on DESKTOP-ED6C2OI2 with PID 5260 (E:\ideaProject\onlinewechatvoting\target\classes started by Administrator in E:\ideaProject\onlinewechatvoting)
+17:09:02.504 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStartupProfileInfo,655] - The following profiles are active: pro
+17:09:04.075 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9000"]
+17:09:04.076 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+17:09:04.076 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.37]
+17:09:04.183 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+17:09:04.659 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - [initHandlerMethods,69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+17:09:04.717 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - [dataSource,56] - Init DruidDataSource
+17:09:05.186 [main] INFO  c.a.d.p.DruidDataSource - [init,930] - {dataSource-1} inited
+17:09:06.183 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9000"]
+17:09:06.209 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,160] - Context refreshed
+17:09:06.227 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,163] - Found 1 custom documentation plugin(s)
+17:09:06.258 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - [scan,41] - Scanning for api listing references
+17:09:06.278 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarted,61] - Started WechatonlinevotingApplication in 4.329 seconds (JVM running for 5.314)
