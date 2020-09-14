@@ -1,4 +1,4 @@
-package com.chaoxing.wechatonlinevoting.config;
+package com.chaoxing.onlinewechatvoting.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ComponentScan;

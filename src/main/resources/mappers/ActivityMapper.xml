@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.chaoxing.wechatonlinevoting.dao.ActivityMapper" >
-  <resultMap id="BaseResultMap" type="com.chaoxing.wechatonlinevoting.bean.po.Activity" >
+<mapper namespace="com.chaoxing.onlinewechatvoting.dao.ActivityMapper" >
+  <resultMap id="BaseResultMap" type="com.chaoxing.onlinewechatvoting.bean.po.Activity" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
@@ -27,7 +27,7 @@
     delete from t_activity
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.chaoxing.wechatonlinevoting.bean.po.Activity" >
+  <insert id="insert" parameterType="com.chaoxing.onlinewechatvoting.bean.po.Activity" >
     insert into t_activity (id, name, content, 
       image, type, entry_method, 
       participants, activity_time, create_time, 
@@ -37,7 +37,7 @@
       #{participants,jdbcType=VARCHAR}, #{activityTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
       #{isDelete,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.chaoxing.wechatonlinevoting.bean.po.Activity" >
+  <insert id="insertSelective" parameterType="com.chaoxing.onlinewechatvoting.bean.po.Activity" >
     insert into t_activity
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -104,7 +104,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chaoxing.wechatonlinevoting.bean.po.Activity" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.chaoxing.onlinewechatvoting.bean.po.Activity" >
     update t_activity
     <set >
       <if test="name != null" >
@@ -137,7 +137,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chaoxing.wechatonlinevoting.bean.po.Activity" >
+  <update id="updateByPrimaryKey" parameterType="com.chaoxing.onlinewechatvoting.bean.po.Activity" >
     update t_activity
     set name = #{name,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},

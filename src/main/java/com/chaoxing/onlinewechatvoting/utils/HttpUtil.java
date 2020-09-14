@@ -1,6 +1,6 @@
-package com.chaoxing.wechatonlinevoting.utils;
+package com.chaoxing.onlinewechatvoting.utils;
 
-import com.chaoxing.wechatonlinevoting.common.ServerResponse;
+import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 import com.github.pagehelper.PageException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;

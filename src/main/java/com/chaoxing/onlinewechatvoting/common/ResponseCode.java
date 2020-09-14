@@ -1,4 +1,4 @@
-package com.chaoxing.wechatonlinevoting.common;
+package com.chaoxing.onlinewechatvoting.common;
 
 /**
  * @ClassName ResponseCode

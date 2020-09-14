@@ -1,4 +1,4 @@
-package com.chaoxing.wechatonlinevoting;
+package com.chaoxing.onlinewechatvoting;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

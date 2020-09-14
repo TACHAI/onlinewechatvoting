@@ -1,4 +1,4 @@
-package com.chaoxing.wechatonlinevoting;
+package com.chaoxing.onlinewechatvoting;
 
 import com.github.pagehelper.PageHelper;
 import org.mybatis.spring.annotation.MapperScan;

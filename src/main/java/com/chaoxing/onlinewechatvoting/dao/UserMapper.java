@@ -1,6 +1,6 @@
-package com.chaoxing.wechatonlinevoting.dao;
+package com.chaoxing.onlinewechatvoting.dao;
 
-import com.chaoxing.wechatonlinevoting.bean.po.User;
+import com.chaoxing.onlinewechatvoting.bean.po.User;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);

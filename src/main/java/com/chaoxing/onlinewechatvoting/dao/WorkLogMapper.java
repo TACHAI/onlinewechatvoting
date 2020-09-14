@@ -1,6 +1,6 @@
-package com.chaoxing.wechatonlinevoting.dao;
+package com.chaoxing.onlinewechatvoting.dao;
 
-import com.chaoxing.wechatonlinevoting.bean.po.WorkLog;
+import com.chaoxing.onlinewechatvoting.bean.po.WorkLog;
 
 public interface WorkLogMapper {
     int deleteByPrimaryKey(Integer id);

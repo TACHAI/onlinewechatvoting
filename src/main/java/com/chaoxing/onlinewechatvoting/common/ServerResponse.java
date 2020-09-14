@@ -1,4 +1,4 @@
-package com.chaoxing.wechatonlinevoting.common;
+package com.chaoxing.onlinewechatvoting.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;

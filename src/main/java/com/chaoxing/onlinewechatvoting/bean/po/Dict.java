@@ -1,4 +1,4 @@
-package com.chaoxing.wechatonlinevoting.bean.po;
+package com.chaoxing.onlinewechatvoting.bean.po;
 
 public class Dict {
     private Integer id;

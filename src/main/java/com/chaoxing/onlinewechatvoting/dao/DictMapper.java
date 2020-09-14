@@ -1,6 +1,6 @@
-package com.chaoxing.wechatonlinevoting.dao;
+package com.chaoxing.onlinewechatvoting.dao;
 
-import com.chaoxing.wechatonlinevoting.bean.po.Dict;
+import com.chaoxing.onlinewechatvoting.bean.po.Dict;
 
 public interface DictMapper {
     int deleteByPrimaryKey(Integer id);

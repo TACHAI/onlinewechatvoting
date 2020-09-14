@@ -1,4 +1,4 @@
-package com.chaoxing.wechatonlinevoting.config;
+package com.chaoxing.onlinewechatvoting.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

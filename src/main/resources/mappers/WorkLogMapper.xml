@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.chaoxing.wechatonlinevoting.dao.WorkLogMapper" >
-  <resultMap id="BaseResultMap" type="com.chaoxing.wechatonlinevoting.bean.po.WorkLog" >
+<mapper namespace="com.chaoxing.onlinewechatvoting.dao.WorkLogMapper" >
+  <resultMap id="BaseResultMap" type="com.chaoxing.onlinewechatvoting.bean.po.WorkLog" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="work_id" property="workId" jdbcType="INTEGER" />
     <result column="wx_openid" property="wxOpenid" jdbcType="VARCHAR" />
@@ -21,13 +21,13 @@
     delete from t_work_log
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.chaoxing.wechatonlinevoting.bean.po.WorkLog" >
+  <insert id="insert" parameterType="com.chaoxing.onlinewechatvoting.bean.po.WorkLog" >
     insert into t_work_log (id, work_id, wx_openid, 
       activity_id, create_time)
     values (#{id,jdbcType=INTEGER}, #{workId,jdbcType=INTEGER}, #{wxOpenid,jdbcType=VARCHAR}, 
       #{activityId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.chaoxing.wechatonlinevoting.bean.po.WorkLog" >
+  <insert id="insertSelective" parameterType="com.chaoxing.onlinewechatvoting.bean.po.WorkLog" >
     insert into t_work_log
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.chaoxing.wechatonlinevoting.bean.po.WorkLog" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.chaoxing.onlinewechatvoting.bean.po.WorkLog" >
     update t_work_log
     <set >
       <if test="workId != null" >
@@ -82,7 +82,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.chaoxing.wechatonlinevoting.bean.po.WorkLog" >
+  <update id="updateByPrimaryKey" parameterType="com.chaoxing.onlinewechatvoting.bean.po.WorkLog" >
     update t_work_log
     set work_id = #{workId,jdbcType=INTEGER},
       wx_openid = #{wxOpenid,jdbcType=VARCHAR},
