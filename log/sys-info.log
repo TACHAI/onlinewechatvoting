@@ -12,3 +12,59 @@
 17:09:06.227 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,163] - Found 1 custom documentation plugin(s)
 17:09:06.258 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - [scan,41] - Scanning for api listing references
 17:09:06.278 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarted,61] - Started WechatonlinevotingApplication in 4.329 seconds (JVM running for 5.314)
+17:19:32.375 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarting,55] - Starting WechatonlinevotingApplication on DESKTOP-ED6C2OI2 with PID 11352 (E:\ideaProject\onlinewechatvoting\target\classes started by Administrator in E:\ideaProject\onlinewechatvoting)
+17:19:32.379 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStartupProfileInfo,655] - The following profiles are active: pro
+17:19:33.716 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9000"]
+17:19:33.717 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+17:19:33.717 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.37]
+17:19:33.822 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+17:19:33.947 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - [dataSource,56] - Init DruidDataSource
+17:19:34.236 [main] INFO  c.a.d.p.DruidDataSource - [init,930] - {dataSource-1} inited
+17:19:34.841 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - [initHandlerMethods,69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+17:19:35.106 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9000"]
+17:19:35.132 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,160] - Context refreshed
+17:19:35.147 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,163] - Found 1 custom documentation plugin(s)
+17:19:35.176 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - [scan,41] - Scanning for api listing references
+17:19:35.480 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarted,61] - Started WechatonlinevotingApplication in 3.773 seconds (JVM running for 4.658)
+17:23:29.952 [http-nio-9000-exec-1] INFO  o.a.c.h.Http11Processor - [log,175] - Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x020x000x010x000x010xfc0x030x03Q0xb0>h0xda+0xba0xac>0xd1;0xf70xb20xd10x99#a0xe70x1d0xdb=f0xf50x850xf40xba0xc30xc4`0x850xb20xb7]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:418)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+17:23:29.976 [http-nio-9000-exec-2] INFO  o.a.c.h.Http11Processor - [log,175] - Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+java.lang.IllegalArgumentException: Invalid character found in method name [0x160x030x010x000xc30x010x000x000xbf0x030x030x1c-}r0x99{0xac+0xcc0xbe0xc70xeb0xef0x8f0xd9z70xa60x150xb40xccN0x140xaf0x99*,0xfb0xee0xb30x120xc20x000x000x1c0xea0xea0xc0+0xc0/0xc0,0xc000xcc0xa90xcc0xa80xc00x130xc00x140x000x9c0x000x9d0x00/0x0050x000x0a0x010x000x00z0x8a0x8a0x000x000x000x000x000x0e0x000x0c0x000x000x09localhost0x000x170x000x000xff0x010x000x010x000x000x0a0x000x0a0x000x08::0x000x1d0x000x170x000x180x000x0b0x000x020x010x000x00#0x000x000x000x100x000x0e0x000x0c0x02h20x08http/1.10x000x050x000x050x010x000x000x000x000x000x0d0x000x140x000x120x040x030x080x040x040x010x050x030x080x050x050x010x080x060x060x010x020x010x000x120x000x000x000x1b0x000x030x020x000x02::0x000x01...]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:418)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:260)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1589)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+17:24:25.215 [http-nio-9000-exec-3] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17:29:01.963 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarting,55] - Starting WechatonlinevotingApplication on DESKTOP-ED6C2OI2 with PID 12368 (E:\ideaProject\onlinewechatvoting\target\classes started by Administrator in E:\ideaProject\onlinewechatvoting)
+17:29:01.966 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStartupProfileInfo,655] - The following profiles are active: pro
+17:29:03.330 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9000"]
+17:29:03.331 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+17:29:03.331 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.37]
+17:29:03.434 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+17:29:03.555 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - [dataSource,56] - Init DruidDataSource
+17:29:03.846 [main] INFO  c.a.d.p.DruidDataSource - [init,930] - {dataSource-1} inited
+17:29:04.417 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - [initHandlerMethods,69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+17:29:04.673 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9000"]
+17:29:04.700 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,160] - Context refreshed
+17:29:04.716 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,163] - Found 1 custom documentation plugin(s)
+17:29:04.744 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - [scan,41] - Scanning for api listing references
+17:29:04.960 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarted,61] - Started WechatonlinevotingApplication in 3.666 seconds (JVM running for 4.658)
+17:29:29.496 [http-nio-9000-exec-1] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'

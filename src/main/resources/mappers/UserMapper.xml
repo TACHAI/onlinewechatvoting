@@ -116,7 +116,7 @@
   </update>
   <select id="login" parameterType="map" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"/>
-    from user
+    from t_user
     where name = #{name,jdbcType=VARCHAR}
     and password = #{password,jdbcType=VARCHAR}
     and is_delete = 0

@@ -43,7 +43,7 @@ public class Swagger2 {
     private ApiInfo apiInfo() {
         Contact contact = new Contact("胡振昌", "", "tc1206966083@gmail.com");
         return new ApiInfoBuilder()
-                .title("九江市微信网页RESTful APIs")
+                .title("景德镇市文化馆在线投票平台RESTful APIs")
                 .description("更多关注http://www.baidu.com")
                 .termsOfServiceUrl("http://www.baidu.com")
                 .contact(contact)
