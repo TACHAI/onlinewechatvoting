@@ -1,8 +1,7 @@
-package com.chaoxing.ovp.common;
+package com.chaoxing.wechatonlinevoting.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.io.Serializable;
 
