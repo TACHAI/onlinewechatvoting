@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chaoxing.wechatonlinevoting.dao.WorkMapper" >
+  <resultMap id="BaseResultMap" type="com.chaoxing.wechatonlinevoting.bean.po.Work" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="video" property="video" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="activity_id" property="activityId" jdbcType="INTEGER" />
+    <result column="work_user_id" property="workUserId" jdbcType="INTEGER" />
+    <result column="select_type1" property="selectType1" jdbcType="INTEGER" />
+    <result column="select_type2" property="selectType2" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, image, video, content, author, activity_id, work_user_id, select_type1, 
+    select_type2, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_work
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_work
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.chaoxing.wechatonlinevoting.bean.po.Work" >
+    insert into t_work (id, name, image, 
+      video, content, author, 
+      activity_id, work_user_id, select_type1, 
+      select_type2, create_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{video,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
+      #{activityId,jdbcType=INTEGER}, #{workUserId,jdbcType=INTEGER}, #{selectType1,jdbcType=INTEGER}, 
+      #{selectType2,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.chaoxing.wechatonlinevoting.bean.po.Work" >
+    insert into t_work
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="video != null" >
+        video,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="workUserId != null" >
+        work_user_id,
+      </if>
+      <if test="selectType1 != null" >
+        select_type1,
+      </if>
+      <if test="selectType2 != null" >
+        select_type2,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="video != null" >
+        #{video,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null" >
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="workUserId != null" >
+        #{workUserId,jdbcType=INTEGER},
+      </if>
+      <if test="selectType1 != null" >
+        #{selectType1,jdbcType=INTEGER},
+      </if>
+      <if test="selectType2 != null" >
+        #{selectType2,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.chaoxing.wechatonlinevoting.bean.po.Work" >
+    update t_work
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="video != null" >
+        video = #{video,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="activityId != null" >
+        activity_id = #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="workUserId != null" >
+        work_user_id = #{workUserId,jdbcType=INTEGER},
+      </if>
+      <if test="selectType1 != null" >
+        select_type1 = #{selectType1,jdbcType=INTEGER},
+      </if>
+      <if test="selectType2 != null" >
+        select_type2 = #{selectType2,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.chaoxing.wechatonlinevoting.bean.po.Work" >
+    update t_work
+    set name = #{name,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      video = #{video,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      activity_id = #{activityId,jdbcType=INTEGER},
+      work_user_id = #{workUserId,jdbcType=INTEGER},
+      select_type1 = #{selectType1,jdbcType=INTEGER},
+      select_type2 = #{selectType2,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
