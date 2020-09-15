@@ -2,6 +2,8 @@ package com.chaoxing.onlinewechatvoting.dao;
 
 import com.chaoxing.onlinewechatvoting.bean.po.WorkUser;
 
+import java.util.List;
+
 public interface WorkUserMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface WorkUserMapper {
     int updateByPrimaryKeySelective(WorkUser record);
 
     int updateByPrimaryKey(WorkUser record);
+
+    List<WorkUser> list();
 }

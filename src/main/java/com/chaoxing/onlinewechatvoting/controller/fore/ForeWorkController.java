@@ -28,7 +28,7 @@ public class ForeWorkController {
     private IworkService workService;
 
 
-    @ApiOperation("后端投票活动分页")
+    @ApiOperation("作品分页")
     @GetMapping("listByPage")
     public PageVO list(@RequestParam(value = "pageSize",defaultValue = "5")int pageSize, @RequestParam(value = "pageNumber",defaultValue = "1")int pageNumber, Integer activityId, Integer selectType1, Integer selectType2){
 
