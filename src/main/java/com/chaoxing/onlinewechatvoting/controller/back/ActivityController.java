@@ -3,6 +3,7 @@ package com.chaoxing.onlinewechatvoting.controller.back;
 import com.chaoxing.onlinewechatvoting.bean.po.Activity;
 import com.chaoxing.onlinewechatvoting.bean.vo.PageVO;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
+import com.chaoxing.onlinewechatvoting.config.VaidParam.ParamsNotNull;
 import com.chaoxing.onlinewechatvoting.service.Activity.IactivityService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -25,7 +26,7 @@ import java.util.List;
 @RestController
 public class ActivityController {
     @Autowired
-    private IactivityService accountService;
+    private IactivityService activityService;
 
     @ApiOperation("后端投票活动分页")
     @GetMapping("listByPage")
@@ -33,7 +34,7 @@ public class ActivityController {
 
         Page page = PageHelper.startPage(pageNumber,pageSize);
         //recommend 100是banner 推荐200
-        List<Activity> list =  accountService.list().getData();
+        List<Activity> list =  activityService.list().getData();
         if(list !=null){
             Long total = page.getTotal();
             PageVO p =new PageVO();
@@ -47,7 +48,25 @@ public class ActivityController {
     @ApiOperation("投票活动添加")
     @PostMapping("add")
     public ServerResponse<String> add(Activity activity){
-        return accountService.add(activity);
+        return activityService.add(activity);
+    }
+
+    @ApiOperation("删除投票活动")
+    @GetMapping("deleteById")
+    public ServerResponse <String>deleteById(@ParamsNotNull Integer id){
+        return activityService.delete(id);
+    }
+
+    @ApiOperation("修改投票活动")
+    @PostMapping("update")
+    public ServerResponse<String> update(Activity activity){
+        return activityService.update(activity);
+    }
+
+    @ApiOperation("查询投票活动")
+    @GetMapping("selectById")
+    public ServerResponse<Activity> selectById(@ParamsNotNull Integer id){
+        return activityService.selectByPrimaryKey(id);
     }
 
 }

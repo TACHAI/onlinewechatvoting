@@ -8,6 +8,7 @@ import com.chaoxing.onlinewechatvoting.service.Activity.IactivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,6 +24,8 @@ public class ActivityServiceImpl implements IactivityService {
 
     @Override
     public ServerResponse<String> add(Activity activity) {
+        activity.setIsDelete(ResponseString.UN_DELETE);
+        activity.setCreateTime(new Date());
         int res = activityMapper.insert(activity);
         if(res >0){
             return ServerResponse.createBySuccessMessage(ResponseString.ADD_SUCCESS);
@@ -32,8 +35,10 @@ public class ActivityServiceImpl implements IactivityService {
 
     @Override
     public ServerResponse<String> delete(Integer id) {
-        int res = activityMapper.deleteByPrimaryKey(id);
-        if(res>0){
+        Activity res = activityMapper.selectByPrimaryKey(id);
+        if(res!=null){
+            res.setIsDelete(ResponseString.IS_DELETE);
+            activityMapper.updateByPrimaryKeySelective(res);
             return ServerResponse.createBySuccessMessage(ResponseString.DELETE_SUCCESS);
         }
         return ServerResponse.createByErrorMessage(ResponseString.DELETE_FAIL);
