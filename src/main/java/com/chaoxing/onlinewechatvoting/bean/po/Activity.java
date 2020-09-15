@@ -20,7 +20,7 @@ public class Activity {
     private Date activityTime;
 
     private Date createTime;
-
+    //  0是未删除   1是已删除
     private Integer isDelete;
 
     public Integer getId() {
