@@ -23,6 +23,7 @@ public class WorkLogServiceImpl implements IworkLogService {
 
     @Override
     public ServerResponse<String> add(WorkLog workLog) {
+        // todo 做一些逻辑判断 一天投一票
         workLog.setCreateTime(new Date());
         int res = workLogMapper.insert(workLog);
         if (res>0){
