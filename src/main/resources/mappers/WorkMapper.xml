@@ -161,4 +161,19 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="list" resultMap="BaseResultMap" parameterType="map">
+    select <include refid="Base_Column_List"/>
+    from t_work
+    <where>
+      <if test="activityId !=''and activityId !=null">
+        and activity_id=#{activityId,jdbcType=INTEGER}
+      </if>
+      <if test="selectType1 !='' and selectType1 !=null">
+        and  select_type1 = #{selectType1,jdbcType=INTEGER}
+      </if>
+      <if test="selectType2 !='' and selectType2 !=null">
+        and  select_type2 = #{selectType2,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
 </mapper>

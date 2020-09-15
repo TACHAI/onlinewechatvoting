@@ -1,5 +1,7 @@
 package com.chaoxing.onlinewechatvoting.bean.po;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Work {
@@ -23,6 +25,7 @@ public class Work {
 
     private Integer selectType2;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     public Integer getId() {

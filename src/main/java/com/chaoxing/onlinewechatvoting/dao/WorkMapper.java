@@ -2,6 +2,8 @@ package com.chaoxing.onlinewechatvoting.dao;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Work;
 
+import java.util.List;
+
 public interface WorkMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface WorkMapper {
     int updateByPrimaryKeySelective(Work record);
 
     int updateByPrimaryKey(Work record);
+
+    List<Work> list(Integer activityId, Integer selectType1, Integer selectType2);
 }

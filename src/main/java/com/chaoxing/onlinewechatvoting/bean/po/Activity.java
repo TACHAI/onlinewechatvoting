@@ -1,5 +1,7 @@
 package com.chaoxing.onlinewechatvoting.bean.po;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Activity {
@@ -19,6 +21,7 @@ public class Activity {
 
     private Date activityTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     //  0是未删除   1是已删除
     private Integer isDelete;
