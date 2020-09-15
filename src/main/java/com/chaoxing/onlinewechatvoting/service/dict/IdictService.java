@@ -20,4 +20,6 @@ public interface IdictService {
     ServerResponse<Dict> selectByPrimaryKey(Integer id);
 
     ServerResponse<List<Dict>> selectByType(Integer type);
+
+    ServerResponse<List<Dict>> list(String typeName);
 }

@@ -18,4 +18,6 @@ public interface DictMapper {
     int updateByPrimaryKey(Dict record);
 
     List<Dict> selectByType(Integer type);
+
+    List<Dict> list(String typeName);
 }

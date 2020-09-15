@@ -84,4 +84,13 @@
     from t_dict
     where  `type` = #{type,jdbcType=INTEGER}
   </select>
+  <select id="list" resultMap="BaseResultMap" parameterType="map">
+    select <include refid="Base_Column_List"/>
+    from t_dict
+    <where>
+      <if test="typeName!=''and typeName!=null">
+        type_name = #{typeName,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
 </mapper>

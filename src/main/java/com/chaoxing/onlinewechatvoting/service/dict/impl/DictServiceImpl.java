@@ -66,4 +66,13 @@ public class DictServiceImpl implements IdictService {
         }
         return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);
     }
+
+    @Override
+    public ServerResponse<List<Dict>> list(String typeName) {
+        List<Dict> list = dictMapper.list(typeName);
+        if(list!=null&&list.size()>0){
+            return ServerResponse.createBySuccess(list);
+        }
+        return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);
+    }
 }
