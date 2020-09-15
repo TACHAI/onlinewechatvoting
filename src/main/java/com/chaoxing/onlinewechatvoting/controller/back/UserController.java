@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  * @Date 2019-12-30
  */
 @Api(tags = "LoginController|用户登录模块")
-@RequestMapping("/api/user/")
+@RequestMapping("/api/back/user/")
 @RestController
 public class UserController {
 

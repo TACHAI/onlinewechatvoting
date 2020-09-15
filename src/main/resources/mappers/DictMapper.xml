@@ -79,4 +79,9 @@
       type = #{type,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectByType" parameterType="map" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from t_dict
+    where  `type` = #{type,jdbcType=INTEGER}
+  </select>
 </mapper>

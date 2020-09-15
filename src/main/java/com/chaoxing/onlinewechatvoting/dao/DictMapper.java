@@ -2,6 +2,8 @@ package com.chaoxing.onlinewechatvoting.dao;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Dict;
 
+import java.util.List;
+
 public interface DictMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface DictMapper {
     int updateByPrimaryKeySelective(Dict record);
 
     int updateByPrimaryKey(Dict record);
+
+    List<Dict> selectByType(Integer type);
 }
