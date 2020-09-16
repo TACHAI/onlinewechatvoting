@@ -63,11 +63,34 @@ public class WorkServiceImpl implements IworkService {
     }
 
     @Override
+    public ServerResponse<List<Work>> listFore(Integer activityId, Integer selectType1, Integer selectType2) {
+        List<Work> list = workMapper.listFore(activityId,selectType1,selectType2);
+        if(list != null&&list.size()>0){
+            return ServerResponse.createBySuccess(list);
+        }
+        return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);    }
+
+    @Override
     public ServerResponse<List<Work>> list(Integer activityId, Integer selectType1, Integer selectType2) {
         List<Work> list = workMapper.list(activityId,selectType1,selectType2);
         if(list != null&&list.size()>0){
             return ServerResponse.createBySuccess(list);
         }
         return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);
+    }
+
+    @Override
+    public ServerResponse<String> status(Integer id) {
+        Work work = workMapper.selectByPrimaryKey(id);
+        if(work== null){
+            return ServerResponse.createByErrorMessage(ResponseString.PARAMS_IS_EMPTY);
+        }
+        if(1==work.getStatus()){
+            work.setStatus(ResponseString.UN_DELETE);
+        }else {
+            work.setStatus(ResponseString.IS_DELETE);
+        }
+        workMapper.updateByPrimaryKeySelective(work);
+        return ServerResponse.createBySuccessMessage(ResponseString.UPDATE_SUCCESS);
     }
 }

@@ -34,7 +34,7 @@ public class ForeWorkController {
 
         Page page = PageHelper.startPage(pageNumber,pageSize);
         //recommend 100是banner 推荐200
-        List<Work> list =  workService.list(activityId,selectType1,selectType2).getData();
+        List<Work> list =  workService.listFore(activityId,selectType1,selectType2).getData();
         if(list !=null){
             Long total = page.getTotal();
             PageVO p =new PageVO();

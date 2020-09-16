@@ -27,6 +27,8 @@ public class Work {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
+    // 0是下架1是上架 2是未审核
+    private Integer status;
 
     public Integer getId() {
         return id;
@@ -114,5 +116,13 @@ public class Work {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

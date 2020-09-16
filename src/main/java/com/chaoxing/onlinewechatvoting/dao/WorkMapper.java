@@ -18,4 +18,6 @@ public interface WorkMapper {
     int updateByPrimaryKey(Work record);
 
     List<Work> list(Integer activityId, Integer selectType1, Integer selectType2);
+
+    List<Work> listFore(Integer activityId, Integer selectType1, Integer selectType2);
 }
