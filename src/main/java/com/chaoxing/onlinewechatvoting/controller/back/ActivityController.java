@@ -69,4 +69,10 @@ public class ActivityController {
         return activityService.selectByPrimaryKey(id);
     }
 
+    @ApiOperation("上下架")
+    @GetMapping("status")
+    public ServerResponse<String> status(@ParamsNotNull Integer id){
+        return activityService.status(id);
+    }
+
 }

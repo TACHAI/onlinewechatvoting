@@ -34,7 +34,7 @@ public class ForeActivityController {
 
         Page page = PageHelper.startPage(pageNumber,pageSize);
         //recommend 100是banner 推荐200
-        List<Activity> list =  activityService.list().getData();
+        List<Activity> list =  activityService.listFore().getData();
         if(list !=null){
             Long total = page.getTotal();
             PageVO p =new PageVO();

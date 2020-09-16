@@ -1,5 +1,6 @@
 package com.chaoxing.onlinewechatvoting.service.Activity.impl;
 
+import com.alibaba.druid.stat.TableStat;
 import com.chaoxing.onlinewechatvoting.bean.po.Activity;
 import com.chaoxing.onlinewechatvoting.common.ResponseString;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+
+import static com.chaoxing.onlinewechatvoting.common.ResponseCode.SUCCESS;
 
 /**
  * @ClassName ActivityServiceImpl
@@ -24,6 +27,7 @@ public class ActivityServiceImpl implements IactivityService {
 
     @Override
     public ServerResponse<String> add(Activity activity) {
+        activity.setType(ResponseString.IS_DELETE);
         activity.setIsDelete(ResponseString.UN_DELETE);
         activity.setCreateTime(new Date());
         int res = activityMapper.insert(activity);
@@ -70,4 +74,26 @@ public class ActivityServiceImpl implements IactivityService {
         }
         return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);
     }
+
+    @Override
+    public ServerResponse<List<Activity>> listFore() {
+        List< Activity> list=activityMapper.listFore();
+        if(list != null&&list.size()>0){
+            return ServerResponse.createBySuccess(list);
+        }
+        return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);    }
+
+    @Override
+    public ServerResponse<String> status(Integer id) {
+        Activity activity = activityMapper.selectByPrimaryKey(id);
+        if(activity== null){
+            return ServerResponse.createByErrorMessage(ResponseString.PARAMS_IS_EMPTY);
+        }
+        if(1==activity.getStatus()){
+            activity.setStatus(ResponseString.UN_DELETE);
+        }else {
+            activity.setStatus(ResponseString.IS_DELETE);
+        }
+        activityMapper.updateByPrimaryKeySelective(activity);
+        return ServerResponse.createBySuccessMessage(ResponseString.UPDATE_SUCCESS);    }
 }

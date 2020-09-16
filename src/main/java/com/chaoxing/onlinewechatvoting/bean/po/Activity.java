@@ -1,5 +1,6 @@
 package com.chaoxing.onlinewechatvoting.bean.po;
 
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -13,10 +14,11 @@ public class Activity {
 
     private String image;
 
+    @ApiModelProperty("主题类型0是主题活动1是本馆活动")
     private Integer type;
-
+    @ApiModelProperty("参赛方式")
     private String entryMethod;
-
+    @ApiModelProperty("参赛对象")
     private String participants;
 
     private Date activityTime;
@@ -25,7 +27,8 @@ public class Activity {
     private Date createTime;
     //  0是未删除   1是已删除
     private Integer isDelete;
-
+    @ApiModelProperty("0是上架1是下架")
+    private Integer status;
     public Integer getId() {
         return id;
     }
@@ -104,5 +107,13 @@ public class Activity {
 
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

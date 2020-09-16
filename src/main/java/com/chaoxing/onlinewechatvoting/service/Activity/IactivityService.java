@@ -20,4 +20,9 @@ public interface IactivityService {
     ServerResponse<Activity> selectByPrimaryKey(Integer id);
 
     ServerResponse<List<Activity>> list();
+
+    ServerResponse<List<Activity>> listFore();
+
+    ServerResponse<String> status(Integer id);
+
 }

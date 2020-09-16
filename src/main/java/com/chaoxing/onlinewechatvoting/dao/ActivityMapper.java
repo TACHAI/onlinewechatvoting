@@ -18,4 +18,6 @@ public interface ActivityMapper {
     int updateByPrimaryKey(Activity record);
 
     List<Activity> list();
+
+    List<Activity> listFore();
 }
