@@ -1,6 +1,7 @@
 package com.chaoxing.onlinewechatvoting.service.work;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Work;
+import com.chaoxing.onlinewechatvoting.bean.vo.WorkVO;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public interface IworkService {
 
     ServerResponse<String> add(Work work);
 
+    ServerResponse<String> foreAdd(Work work);
+
     ServerResponse<String> deleteById(Integer id);
 
     ServerResponse<String> update(Work work);
@@ -23,4 +26,6 @@ public interface IworkService {
     ServerResponse<List<Work>> list(Integer activityId,Integer selectType1,Integer selectType2);
 
     ServerResponse<String> status(Integer id);
+
+    List<WorkVO> listByActivityId(Integer activityId);
 }

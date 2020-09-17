@@ -2,6 +2,8 @@ package com.chaoxing.onlinewechatvoting.dao;
 
 import com.chaoxing.onlinewechatvoting.bean.po.WorkLog;
 
+import java.util.List;
+
 public interface WorkLogMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,8 @@ public interface WorkLogMapper {
     int updateByPrimaryKeySelective(WorkLog record);
 
     int updateByPrimaryKey(WorkLog record);
+
+    List<WorkLog> selectByWorkIdAndOpenId(String openId,Integer workId);
+
+    List<WorkLog> selectByWorkId(Integer id);
 }

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
-import static com.chaoxing.onlinewechatvoting.common.ResponseCode.SUCCESS;
 
 /**
  * @ClassName ActivityServiceImpl
@@ -27,7 +26,7 @@ public class ActivityServiceImpl implements IactivityService {
 
     @Override
     public ServerResponse<String> add(Activity activity) {
-        activity.setType(ResponseString.IS_DELETE);
+        activity.setStatus(ResponseString.IS_DELETE);
         activity.setIsDelete(ResponseString.UN_DELETE);
         activity.setCreateTime(new Date());
         int res = activityMapper.insert(activity);

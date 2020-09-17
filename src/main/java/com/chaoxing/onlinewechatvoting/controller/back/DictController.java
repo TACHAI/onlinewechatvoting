@@ -32,11 +32,11 @@ public class DictController {
 
     @ApiOperation("后端字典分页")
     @GetMapping("listByPage")
-    public PageVO list(@RequestParam(value = "pageSize",defaultValue = "5")int pageSize, @RequestParam(value = "pageNumber",defaultValue = "1")int pageNumber,String typeName){
+    public PageVO list(@RequestParam(value = "pageSize",defaultValue = "5")int pageSize, @RequestParam(value = "pageNumber",defaultValue = "1")int pageNumber){
 
         Page page = PageHelper.startPage(pageNumber,pageSize);
         //recommend 100是banner 推荐200
-        List<Dict> list =  dictService.list(typeName).getData();
+        List<Dict> list =  dictService.list(null).getData();
         if(list !=null){
             Long total = page.getTotal();
             PageVO p =new PageVO();

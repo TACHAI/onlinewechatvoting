@@ -1,6 +1,7 @@
 package com.chaoxing.onlinewechatvoting.bean.po;
 
 public class Dict {
+
     private Integer id;
 
     private String name;
@@ -8,6 +9,8 @@ public class Dict {
     private String typeName;
 
     private Integer type;
+
+    private Integer value;
 
     public Integer getId() {
         return id;
@@ -39,5 +42,13 @@ public class Dict {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
+
+    public void setValue(Integer value) {
+        this.value = value;
     }
 }

@@ -5,7 +5,10 @@ import org.joda.time.DateTime;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -93,13 +96,58 @@ public class DateUtil {
         return  diff;
     }
 
-    public static void main(String[] args) throws ParseException {
-        Date now =  new Date();
+    //判断两个时间是否是今天
 
-        Date start =  new Date((now.getTime() -1000000));
-        //System.out.println(getMinutes(now,start));
-         LocalDateTime noew   = LocalDateTime.now();
-        System.out.println(noew);
+    /**
+     *
+     * @param date
+     * @return true 同一天  false 不同一天
+     */
+    public static boolean checkNow(Date date){
+        return checkOneDay(date,new Date());
+    }
+    //判断两个时间是否是同一天
+
+    /**
+     *
+     * @param date1
+     * @param date2
+     * @return true 同一天  false 不同一天
+     */
+    public static boolean checkOneDay(Date date1,Date date2){
+        LocalDate obj1 = dateToLocalDate(date1);
+        LocalDate obj2 = dateToLocalDate(date2);
+        if(obj1.equals(obj2)){
+            return true;
+        }
+        return false;
+    }
+    /**
+     *
+     * DateToLocalDate
+     * @param date
+     * @return
+     */
+    public static LocalDate dateToLocalDate(Date date){
+        Instant instant = date.toInstant();
+        ZoneId zoneId = ZoneId.systemDefault();
+        LocalDate localDate = instant.atZone(zoneId).toLocalDate();
+        return localDate;
+    }
+
+    /**
+     * DateToLocalDate
+     * @param date
+     * @return
+     */
+    public static LocalDateTime dateToLocalDateTime(Date date){
+        Instant instant = date.toInstant();
+        ZoneId zone = ZoneId.systemDefault();
+        return instant.atZone(zone).toLocalDateTime();
+    }
+
+    public static void main(String[] args) throws ParseException {
+        System.out.println(checkNow(new Date()));
     }
 
 

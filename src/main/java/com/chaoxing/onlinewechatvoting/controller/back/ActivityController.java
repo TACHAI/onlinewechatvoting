@@ -35,14 +35,20 @@ public class ActivityController {
         Page page = PageHelper.startPage(pageNumber,pageSize);
         //recommend 100是banner 推荐200
         List<Activity> list =  activityService.list().getData();
+        PageVO p =new PageVO();
         if(list !=null){
             Long total = page.getTotal();
-            PageVO p =new PageVO();
             p.setTotal(total);
             p.setRows(list);
             return p;
         }
-        return null;
+//        p.setTotal((long) 0);
+//        p.setRows(list);
+        return null
+
+
+
+                ;
     }
 
     @ApiOperation("投票活动添加")

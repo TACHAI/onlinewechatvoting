@@ -2,7 +2,9 @@ package com.chaoxing.onlinewechatvoting.controller.fore;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Work;
 import com.chaoxing.onlinewechatvoting.bean.vo.PageVO;
+import com.chaoxing.onlinewechatvoting.bean.vo.WorkVO;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
+import com.chaoxing.onlinewechatvoting.config.VaidParam.ParamsNotNull;
 import com.chaoxing.onlinewechatvoting.service.work.IworkService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -46,9 +48,15 @@ public class ForeWorkController {
     }
 
 
+    @ApiOperation("作品列表")
+    @GetMapping("listByActivityId")
+    public List<WorkVO> listByActivityId(@ParamsNotNull Integer activityId){
+        return workService.listByActivityId(activityId);
+    }
+
     @ApiOperation("作品添加")
     @PostMapping("add")
     public ServerResponse<String> add(Work work){
-        return workService.add(work);
+        return workService.foreAdd(work);
     }
 }

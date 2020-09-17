@@ -27,8 +27,10 @@ public class Activity {
     private Date createTime;
     //  0是未删除   1是已删除
     private Integer isDelete;
+
     @ApiModelProperty("0是上架1是下架")
     private Integer status;
+
     public Integer getId() {
         return id;
     }

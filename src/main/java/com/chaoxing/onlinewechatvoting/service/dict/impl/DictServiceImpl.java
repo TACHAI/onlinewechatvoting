@@ -53,9 +53,9 @@ public class DictServiceImpl implements IdictService {
     public ServerResponse<Dict> selectByPrimaryKey(Integer id) {
         Dict dict = dictMapper.selectByPrimaryKey(id);
         if(dict!=null){
-            return ServerResponse.createBySuccessMessage(ResponseString.ADD_SUCCESS);
+            return ServerResponse.createBySuccess(dict);
         }
-        return ServerResponse.createByErrorMessage(ResponseString.ADD_FAIL);
+        return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);
     }
 
     @Override

@@ -1,14 +1,19 @@
 package com.chaoxing.onlinewechatvoting.service.work.impl;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Work;
+import com.chaoxing.onlinewechatvoting.bean.po.WorkLog;
+import com.chaoxing.onlinewechatvoting.bean.vo.WorkVO;
 import com.chaoxing.onlinewechatvoting.common.ResponseString;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
+import com.chaoxing.onlinewechatvoting.dao.WorkLogMapper;
 import com.chaoxing.onlinewechatvoting.dao.WorkMapper;
 import com.chaoxing.onlinewechatvoting.service.work.IworkService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,10 +28,24 @@ public class WorkServiceImpl implements IworkService {
 
     @Autowired
     private WorkMapper workMapper;
+    @Autowired
+    private WorkLogMapper workLogMapper;
 
     @Override
     public ServerResponse<String> add(Work work) {
 //        work.setCreateTime(LocalDateTime.now());
+        work.setStatus(ResponseString.UN_DELETE);
+        work.setCreateTime(new Date());
+        int res = workMapper.insert(work);
+        if(res>0){
+            return ServerResponse.createBySuccessMessage(ResponseString.ADD_SUCCESS);
+        }
+        return ServerResponse.createByErrorMessage(ResponseString.ADD_FAIL);
+    }
+
+    @Override
+    public ServerResponse<String> foreAdd(Work work) {
+        work.setStatus(ResponseString.IS_DELETE);
         work.setCreateTime(new Date());
         int res = workMapper.insert(work);
         if(res>0){
@@ -92,5 +111,20 @@ public class WorkServiceImpl implements IworkService {
         }
         workMapper.updateByPrimaryKeySelective(work);
         return ServerResponse.createBySuccessMessage(ResponseString.UPDATE_SUCCESS);
+    }
+
+    @Override
+    public List<WorkVO> listByActivityId(Integer activityId) {
+        List<Work> list = workMapper.listFore(activityId,null,null);
+        List<WorkVO> listVO = new ArrayList<>();
+        for(int i=0;i<list.size();i++){
+            Work work = list.get(i);
+            WorkVO vo = new WorkVO();
+            BeanUtils.copyProperties(vo,work);
+            List<WorkLog> logList = workLogMapper.selectByWorkId(work.getId());
+            vo.setVotes(logList.size());
+            listVO.add(vo);
+        }
+        return listVO;
     }
 }
