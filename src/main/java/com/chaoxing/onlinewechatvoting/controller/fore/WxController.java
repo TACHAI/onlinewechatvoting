@@ -2,6 +2,7 @@ package com.chaoxing.onlinewechatvoting.controller.fore;
 
 import com.chaoxing.onlinewechatvoting.bean.po.WechatUser;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
+import com.chaoxing.onlinewechatvoting.service.WechatUser.IwechatUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class WxController {
 
     @Autowired
-    private IwxUserService iwxUserService;
+    private IwechatUserService iwechatUserService;
 
     @ApiOperation("获取用户信息接口")
     @PostMapping("getWxUser")
     public ServerResponse<WechatUser> getWxUser(String code) {
-        return iwxUserService.getWxUser(code);
+        return iwechatUserService.getWxUser(code);
     }
 
 }

@@ -138,4 +138,9 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectByOpenId" parameterType="map" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from t_wechat_user
+    where openid = #{openId,jdbcType=VARCHAR}
+  </select>
 </mapper>

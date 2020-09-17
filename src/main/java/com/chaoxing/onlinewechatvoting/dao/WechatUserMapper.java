@@ -14,4 +14,6 @@ public interface WechatUserMapper {
     int updateByPrimaryKeySelective(WechatUser record);
 
     int updateByPrimaryKey(WechatUser record);
+
+    WechatUser selectByOpenId(String openId);
 }
