@@ -231,3 +231,37 @@
 15:07:44.596 [http-nio-9000-exec-1] INFO  o.a.t.u.h.p.Cookie - [log,173] - A cookie header was received [1575257901; Webstorm-53878240=ece3a0a7-d473-41bf-8d76-b3ba38770674; JF_TONGJI_SID=0ab9f32a-f326-454c-9e45-eda64b95fea9; _chaoxing=57fb10bfe8de4c6faadccd2e97b1ec5d; Hm_lvt_cc7c68ca6e0732df36608aed8e7c=1596681142,1598403523; pageno_cookie=1; Hm_lpvt_cc7c68ca6e0732df36608aed8e7c=1598926091; beegosessionID=1ae1ab6375383623c55f7fdc9f543cca; ms.session.id=3c1aa340-2968-4a67-8a30-41bb64ce061f; JSESSIONID=A9872E4C1C0EDE3B9746A003A946E864] that contained an invalid cookie. That cookie will be ignored.
  Note: further occurrences of this error will be logged at DEBUG level.
 15:07:44.606 [http-nio-9000-exec-1] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+15:10:11.367 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarting,55] - Starting WechatonlinevotingApplication on DESKTOP-ED6C2OI2 with PID 13412 (E:\ideaProject\onlinewechatvoting\target\classes started by Administrator in E:\ideaProject\onlinewechatvoting)
+15:10:11.370 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStartupProfileInfo,655] - The following profiles are active: pro
+15:10:12.636 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9000"]
+15:10:12.637 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+15:10:12.637 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.37]
+15:10:12.750 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+15:10:12.869 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - [dataSource,56] - Init DruidDataSource
+15:10:13.144 [main] INFO  c.a.d.p.DruidDataSource - [init,930] - {dataSource-1} inited
+15:10:13.717 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - [initHandlerMethods,69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+15:10:13.971 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9000"]
+15:10:14.000 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,160] - Context refreshed
+15:10:14.018 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,163] - Found 1 custom documentation plugin(s)
+15:10:14.052 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - [scan,41] - Scanning for api listing references
+15:10:14.219 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_1
+15:10:14.222 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: deleteByIdUsingGET_1
+15:10:14.226 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_1
+15:10:14.232 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByIdUsingGET_1
+15:10:14.242 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: updateUsingPOST_1
+15:10:14.246 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_2
+15:10:14.249 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByTypeUsingGET_1
+15:10:14.255 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_2
+15:10:14.258 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_3
+15:10:14.268 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_3
+15:10:14.336 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_4
+15:10:14.338 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: deleteByIdUsingGET_2
+15:10:14.340 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_4
+15:10:14.345 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByIdUsingGET_2
+15:10:14.348 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: statusUsingGET_1
+15:10:14.350 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: updateUsingPOST_2
+15:10:14.353 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_5
+15:10:14.374 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarted,61] - Started WechatonlinevotingApplication in 3.606 seconds (JVM running for 4.46)
+15:10:23.872 [http-nio-9000-exec-1] INFO  o.a.t.u.h.p.Cookie - [log,173] - A cookie header was received [1575257901; Webstorm-53878240=ece3a0a7-d473-41bf-8d76-b3ba38770674; JF_TONGJI_SID=0ab9f32a-f326-454c-9e45-eda64b95fea9; _chaoxing=57fb10bfe8de4c6faadccd2e97b1ec5d; Hm_lvt_cc7c68ca6e0732df36608aed8e7c=1596681142,1598403523; pageno_cookie=1; Hm_lpvt_cc7c68ca6e0732df36608aed8e7c=1598926091; beegosessionID=1ae1ab6375383623c55f7fdc9f543cca; ms.session.id=3c1aa340-2968-4a67-8a30-41bb64ce061f; JSESSIONID=A9872E4C1C0EDE3B9746A003A946E864] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+15:10:23.883 [http-nio-9000-exec-1] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
