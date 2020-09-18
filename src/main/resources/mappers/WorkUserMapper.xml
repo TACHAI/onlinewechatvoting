@@ -9,9 +9,11 @@
     <result column="openid" property="openid" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, age, school, openid, phone, create_time
+    id, name, age, school, openid, phone, create_time, nation, image
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -26,10 +28,10 @@
   <insert id="insert" parameterType="com.chaoxing.onlinewechatvoting.bean.po.WorkUser" >
     insert into t_work_user (id, name, age, 
       school, openid, phone, 
-      create_time)
+      create_time,nation,image)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=TIMESTAMP}, 
-      #{school,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{school,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP},#{nation,jdbcType=VARCHAR},#{image,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.chaoxing.onlinewechatvoting.bean.po.WorkUser" >
     insert into t_work_user
@@ -54,6 +56,12 @@
       </if>
       <if test="createTime != null" >
         create_time,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="image != null" >
+        image,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -101,6 +109,12 @@
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        nation = #{image,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -111,7 +125,9 @@
       school = #{school,jdbcType=VARCHAR},
       openid = #{openid,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      nation = #{nation,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="list" parameterType="map" resultMap="BaseResultMap">

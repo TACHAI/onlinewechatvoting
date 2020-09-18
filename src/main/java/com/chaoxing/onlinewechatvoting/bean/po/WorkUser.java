@@ -17,6 +17,10 @@ public class WorkUser {
 
     private Date createTime;
 
+    private String nation;
+
+    private String image;
+
     public Integer getId() {
         return id;
     }
@@ -71,5 +75,22 @@ public class WorkUser {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

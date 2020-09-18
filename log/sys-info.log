@@ -396,3 +396,72 @@
 11:00:15.021 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: updateUsingPOST_2
 11:00:15.024 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_5
 11:00:15.066 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarted,61] - Started WechatonlinevotingApplication in 3.681 seconds (JVM running for 4.51)
+12:27:12.831 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarting,55] - Starting WechatonlinevotingApplication on DESKTOP-ED6C2OI2 with PID 3696 (E:\ideaProject\onlinewechatvoting\target\classes started by Administrator in E:\ideaProject\onlinewechatvoting)
+12:27:12.834 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStartupProfileInfo,655] - The following profiles are active: pro
+12:27:14.357 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9000"]
+12:27:14.357 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+12:27:14.358 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.37]
+12:27:14.469 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+12:27:14.605 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - [dataSource,56] - Init DruidDataSource
+12:27:14.902 [main] INFO  c.a.d.p.DruidDataSource - [init,930] - {dataSource-1} inited
+12:27:15.519 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - [initHandlerMethods,69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+12:27:15.790 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9000"]
+12:27:15.816 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,160] - Context refreshed
+12:27:15.831 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,163] - Found 1 custom documentation plugin(s)
+12:27:15.863 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - [scan,41] - Scanning for api listing references
+12:27:15.995 [http-nio-9000-exec-1] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12:27:16.043 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_1
+12:27:16.046 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: deleteByIdUsingGET_1
+12:27:16.049 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_1
+12:27:16.055 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByIdUsingGET_1
+12:27:16.064 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: updateUsingPOST_1
+12:27:16.069 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_2
+12:27:16.071 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByIdUsingGET_2
+12:27:16.074 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByTypeUsingGET_1
+12:27:16.080 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_2
+12:27:16.083 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_3
+12:27:16.093 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByIdUsingGET_3
+12:27:16.103 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_3
+12:27:16.175 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_4
+12:27:16.176 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: deleteByIdUsingGET_2
+12:27:16.178 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_4
+12:27:16.180 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByIdUsingGET_4
+12:27:16.181 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: statusUsingGET_1
+12:27:16.184 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: updateUsingPOST_2
+12:27:16.188 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_5
+12:27:16.224 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarted,61] - Started WechatonlinevotingApplication in 4.021 seconds (JVM running for 4.956)
+15:09:21.784 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarting,55] - Starting WechatonlinevotingApplication on DESKTOP-ED6C2OI2 with PID 16268 (E:\ideaProject\onlinewechatvoting\target\classes started by Administrator in E:\ideaProject\onlinewechatvoting)
+15:09:21.787 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStartupProfileInfo,655] - The following profiles are active: pro
+15:09:23.157 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Initializing ProtocolHandler ["http-nio-9000"]
+15:09:23.158 [main] INFO  o.a.c.c.StandardService - [log,173] - Starting service [Tomcat]
+15:09:23.158 [main] INFO  o.a.c.c.StandardEngine - [log,173] - Starting Servlet engine: [Apache Tomcat/9.0.37]
+15:09:23.262 [main] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring embedded WebApplicationContext
+15:09:23.386 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - [dataSource,56] - Init DruidDataSource
+15:09:23.671 [main] INFO  c.a.d.p.DruidDataSource - [init,930] - {dataSource-1} inited
+15:09:24.293 [main] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - [initHandlerMethods,69] - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+15:09:24.552 [main] INFO  o.a.c.h.Http11NioProtocol - [log,173] - Starting ProtocolHandler ["http-nio-9000"]
+15:09:24.578 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,160] - Context refreshed
+15:09:24.592 [main] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - [start,163] - Found 1 custom documentation plugin(s)
+15:09:24.625 [main] INFO  s.d.s.w.s.ApiListingReferenceScanner - [scan,41] - Scanning for api listing references
+15:09:24.793 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_1
+15:09:24.796 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: deleteByIdUsingGET_1
+15:09:24.798 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_1
+15:09:24.803 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByIdUsingGET_1
+15:09:24.815 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: updateUsingPOST_1
+15:09:24.821 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_2
+15:09:24.823 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByIdUsingGET_2
+15:09:24.826 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByTypeUsingGET_1
+15:09:24.833 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_2
+15:09:24.836 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_3
+15:09:24.846 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByIdUsingGET_3
+15:09:24.856 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_3
+15:09:24.925 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: addUsingPOST_4
+15:09:24.927 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: deleteByIdUsingGET_2
+15:09:24.930 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_4
+15:09:24.931 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: selectByIdUsingGET_4
+15:09:24.932 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: statusUsingGET_1
+15:09:24.934 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: updateUsingPOST_2
+15:09:24.937 [main] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - [startingWith,40] - Generating unique operation named: listUsingGET_5
+15:09:24.966 [main] INFO  c.c.o.WechatonlinevotingApplication - [logStarted,61] - Started WechatonlinevotingApplication in 3.771 seconds (JVM running for 4.656)
+15:10:43.160 [http-nio-9000-exec-1] INFO  o.a.c.c.C.[.[.[/] - [log,173] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+16:02:59.360 [main] INFO  c.c.o.u.VideoUtil - [getImage,47] - VideoUtil.getImage:targetFile:E:\ideaProject\onlinewechatvoting\static\uploadFile\video\57I888piC6iQ202009181223028.jpg

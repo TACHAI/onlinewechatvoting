@@ -1,6 +1,7 @@
 package com.chaoxing.onlinewechatvoting.dao;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Dict;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface DictMapper {
 
     int updateByPrimaryKey(Dict record);
 
-    List<Dict> selectByType(Integer type);
+    List<Dict> selectByType(@Param("type") Integer type);
 
-    List<Dict> list(String typeName);
+    List<Dict> list(@Param("typeName") String typeName);
 }

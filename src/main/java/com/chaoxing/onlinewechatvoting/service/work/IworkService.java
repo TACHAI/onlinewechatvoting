@@ -4,6 +4,7 @@ import com.chaoxing.onlinewechatvoting.bean.po.Work;
 import com.chaoxing.onlinewechatvoting.bean.vo.WorkVO;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 
+import java.io.IOException;
 import java.util.List;
 
 /**

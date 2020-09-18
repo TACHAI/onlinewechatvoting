@@ -30,5 +30,11 @@ public class WxController {
         return iwechatUserService.getWxUser(code);
     }
 
+
+    @ApiOperation("验证用户是否关注微信公众号")
+    @PostMapping("checkAttention")
+    public ServerResponse <String> checkAttention(String openId){
+        return iwechatUserService.checkAttention(openId);
+    }
 }
 

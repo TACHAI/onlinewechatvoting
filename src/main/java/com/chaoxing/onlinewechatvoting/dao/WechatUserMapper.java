@@ -1,6 +1,7 @@
 package com.chaoxing.onlinewechatvoting.dao;
 
 import com.chaoxing.onlinewechatvoting.bean.po.WechatUser;
+import org.apache.ibatis.annotations.Param;
 
 public interface WechatUserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -15,5 +16,5 @@ public interface WechatUserMapper {
 
     int updateByPrimaryKey(WechatUser record);
 
-    WechatUser selectByOpenId(String openId);
+    WechatUser selectByOpenId(@Param("openId") String openId);
 }

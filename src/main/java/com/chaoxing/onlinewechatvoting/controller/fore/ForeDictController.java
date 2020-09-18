@@ -28,7 +28,7 @@ public class ForeDictController {
 
     @ApiOperation("根据类型查询字典")
     @GetMapping("selectByType")
-    public ServerResponse<List<Dict>> selectByType(@ParamsNotNull Integer id){
-        return dictService.selectByType(id);
+    public ServerResponse<List<Dict>> selectByType(@ParamsNotNull Integer type){
+        return dictService.selectByType(type);
     }
 }

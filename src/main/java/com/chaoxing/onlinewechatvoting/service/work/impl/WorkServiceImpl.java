@@ -1,4 +1,5 @@
 package com.chaoxing.onlinewechatvoting.service.work.impl;
+import	java.io.IOException;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Activity;
 import com.chaoxing.onlinewechatvoting.bean.po.Work;
@@ -10,10 +11,13 @@ import com.chaoxing.onlinewechatvoting.dao.ActivityMapper;
 import com.chaoxing.onlinewechatvoting.dao.WorkLogMapper;
 import com.chaoxing.onlinewechatvoting.dao.WorkMapper;
 import com.chaoxing.onlinewechatvoting.service.work.IworkService;
+import com.chaoxing.onlinewechatvoting.utils.VideoUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +29,7 @@ import java.util.List;
  * @Email tc1206966083@gmail.com
  * @Date 2020-09-15 13:58
  */
+@Slf4j
 @Service(value = "iworkService")
 public class WorkServiceImpl implements IworkService {
 
@@ -48,9 +53,17 @@ public class WorkServiceImpl implements IworkService {
     }
 
     @Override
-    public ServerResponse<String> foreAdd(Work work) {
+    public ServerResponse<String> foreAdd(Work work)  {
         work.setStatus(ResponseString.IS_DELETE);
         work.setCreateTime(new Date());
+        // 截取视频的前几帧
+        if(work.getImage()==null){
+            try {
+                work.setImage(VideoUtil.getImage(work.getVideo()));
+            }catch (IOException e) {
+                log.error("VideoUtil.getImage：{}",e.getMessage());
+            }
+        }
         int res = workMapper.insert(work);
         if(res>0){
             return ServerResponse.createBySuccessMessage(ResponseString.ADD_SUCCESS);
