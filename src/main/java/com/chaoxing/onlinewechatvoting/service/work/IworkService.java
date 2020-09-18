@@ -23,6 +23,7 @@ public interface IworkService {
     ServerResponse<Work> selectById(Integer id);
 
     ServerResponse<List<Work>> listFore(Integer activityId,Integer selectType1,Integer selectType2);
+
     ServerResponse<List<Work>> list(Integer activityId,Integer selectType1,Integer selectType2);
 
     ServerResponse<String> status(Integer id);

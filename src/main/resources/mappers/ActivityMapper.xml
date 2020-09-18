@@ -165,11 +165,14 @@
     select <include refid="Base_Column_List"/>
     from t_activity
     where is_delete=0
+    order by id desc
   </select>
   <select id="listFore" parameterType="map" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"/>
     from t_activity
     where is_delete=0
     and `status`=0
+    and activity_time <![CDATA[ > ]]> now()
+    order by id desc
   </select>
 </mapper>

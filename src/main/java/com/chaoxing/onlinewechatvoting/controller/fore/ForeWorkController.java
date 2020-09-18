@@ -54,6 +54,14 @@ public class ForeWorkController {
         return workService.listByActivityId(activityId);
     }
 
+
+    @ApiOperation("作品详情")
+    @GetMapping("selectById")
+    public ServerResponse<Work> selectById(@ParamsNotNull Integer id){
+        return workService.selectById(id);
+    }
+
+
     @ApiOperation("作品添加")
     @PostMapping("add")
     public ServerResponse<String> add(Work work){

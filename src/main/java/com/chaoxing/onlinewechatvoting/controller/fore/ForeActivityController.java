@@ -2,6 +2,8 @@ package com.chaoxing.onlinewechatvoting.controller.fore;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Activity;
 import com.chaoxing.onlinewechatvoting.bean.vo.PageVO;
+import com.chaoxing.onlinewechatvoting.common.ServerResponse;
+import com.chaoxing.onlinewechatvoting.config.VaidParam.ParamsNotNull;
 import com.chaoxing.onlinewechatvoting.service.Activity.IactivityService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -43,6 +45,12 @@ public class ForeActivityController {
             return p;
         }
         return null;
+    }
+
+    @ApiOperation("前端获取投票活动")
+    @GetMapping("selectById")
+    public ServerResponse<Activity> selectById(@ParamsNotNull Integer id){
+        return activityService.selectByPrimaryKey(id);
     }
 
 }

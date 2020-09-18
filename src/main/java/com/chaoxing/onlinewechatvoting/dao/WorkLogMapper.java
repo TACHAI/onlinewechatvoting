@@ -1,6 +1,7 @@
 package com.chaoxing.onlinewechatvoting.dao;
 
 import com.chaoxing.onlinewechatvoting.bean.po.WorkLog;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface WorkLogMapper {
 
     int updateByPrimaryKey(WorkLog record);
 
-    List<WorkLog> selectByWorkIdAndOpenId(String openId,Integer workId);
+    List<WorkLog> selectByWorkIdAndOpenId(@Param("openId") String openId, @Param("workId") Integer workId);
 
-    List<WorkLog> selectByWorkId(Integer id);
+    List<WorkLog> selectByWorkId(@Param("workId") Integer workId);
 }

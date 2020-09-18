@@ -1,10 +1,12 @@
 package com.chaoxing.onlinewechatvoting.service.work.impl;
 
+import com.chaoxing.onlinewechatvoting.bean.po.Activity;
 import com.chaoxing.onlinewechatvoting.bean.po.Work;
 import com.chaoxing.onlinewechatvoting.bean.po.WorkLog;
 import com.chaoxing.onlinewechatvoting.bean.vo.WorkVO;
 import com.chaoxing.onlinewechatvoting.common.ResponseString;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
+import com.chaoxing.onlinewechatvoting.dao.ActivityMapper;
 import com.chaoxing.onlinewechatvoting.dao.WorkLogMapper;
 import com.chaoxing.onlinewechatvoting.dao.WorkMapper;
 import com.chaoxing.onlinewechatvoting.service.work.IworkService;
@@ -30,6 +32,8 @@ public class WorkServiceImpl implements IworkService {
     private WorkMapper workMapper;
     @Autowired
     private WorkLogMapper workLogMapper;
+    @Autowired
+    private ActivityMapper activityMapper;
 
     @Override
     public ServerResponse<String> add(Work work) {
@@ -76,6 +80,10 @@ public class WorkServiceImpl implements IworkService {
     public ServerResponse<Work> selectById(Integer id) {
         Work work = workMapper.selectByPrimaryKey(id);
         if(work!=null){
+            List<WorkLog> logList = workLogMapper.selectByWorkId(work.getId());
+            if(logList!=null){
+                work.setVotes(logList.size());
+            }
             return ServerResponse.createBySuccess(work);
         }
         return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);
@@ -85,6 +93,14 @@ public class WorkServiceImpl implements IworkService {
     public ServerResponse<List<Work>> listFore(Integer activityId, Integer selectType1, Integer selectType2) {
         List<Work> list = workMapper.listFore(activityId,selectType1,selectType2);
         if(list != null&&list.size()>0){
+            for(int i=0;i<list.size();i++){
+                Work work = list.get(i);
+                work.setActivityType(activityMapper.selectByPrimaryKey(work.getActivityId()).getType());
+                List<WorkLog> logList = workLogMapper.selectByWorkId(work.getId());
+                if(logList!=null){
+                    work.setVotes(logList.size());
+                }
+            }
             return ServerResponse.createBySuccess(list);
         }
         return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);    }
@@ -93,6 +109,13 @@ public class WorkServiceImpl implements IworkService {
     public ServerResponse<List<Work>> list(Integer activityId, Integer selectType1, Integer selectType2) {
         List<Work> list = workMapper.list(activityId,selectType1,selectType2);
         if(list != null&&list.size()>0){
+            for(int i=0;i<list.size();i++){
+                Work work = list.get(i);
+                List<WorkLog> logList = workLogMapper.selectByWorkId(work.getId());
+                if(logList!=null){
+                    work.setVotes(logList.size());
+                }
+            }
             return ServerResponse.createBySuccess(list);
         }
         return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);
@@ -120,9 +143,13 @@ public class WorkServiceImpl implements IworkService {
         for(int i=0;i<list.size();i++){
             Work work = list.get(i);
             WorkVO vo = new WorkVO();
-            BeanUtils.copyProperties(vo,work);
+            BeanUtils.copyProperties(work,vo);
+            Activity activity = activityMapper.selectByPrimaryKey(work.getActivityId());
+            vo.setActivityType(activity.getType());
             List<WorkLog> logList = workLogMapper.selectByWorkId(work.getId());
-            vo.setVotes(logList.size());
+            if(logList!=null){
+                vo.setVotes(logList.size());
+            }
             listVO.add(vo);
         }
         return listVO;

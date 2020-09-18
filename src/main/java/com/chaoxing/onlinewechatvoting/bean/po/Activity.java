@@ -21,6 +21,7 @@ public class Activity {
     @ApiModelProperty("参赛对象")
     private String participants;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date activityTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")

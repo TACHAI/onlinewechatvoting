@@ -23,4 +23,5 @@ public class WorkVO  {
 
     private Integer votes;
 
+    private Integer ActivityType;
 }

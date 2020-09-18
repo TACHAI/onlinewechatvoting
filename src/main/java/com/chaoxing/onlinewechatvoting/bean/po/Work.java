@@ -29,6 +29,10 @@ public class Work {
     private Date createTime;
     // 0是下架1是上架 2是未审核
     private Integer status;
+    // 票数
+    private Integer votes;
+
+    private Integer activityType;
 
     public Integer getId() {
         return id;
@@ -124,5 +128,21 @@ public class Work {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getVotes() {
+        return votes;
+    }
+
+    public void setVotes(Integer votes) {
+        this.votes = votes;
+    }
+
+    public Integer getActivityType() {
+        return activityType;
+    }
+
+    public void setActivityType(Integer activityType) {
+        this.activityType = activityType;
     }
 }

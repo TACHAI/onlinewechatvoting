@@ -98,7 +98,7 @@
        and wx_openid = #{openId,jdbcType=VARCHAR}
       </if>
       <if test="workId !=''and workId !=null">
-       and work_id = #{workId,jdbcType=VARCHAR}
+       and work_id = #{workId,jdbcType=INTEGER}
       </if>
     </where>
   </select>
@@ -107,7 +107,7 @@
     from t_work_log
     <where>
       <if test="workId !=''and workId !=null">
-        and work_id = #{workId,jdbcType=VARCHAR}
+        and work_id = #{workId,jdbcType=INTEGER}
       </if>
     </where>
   </select>
