@@ -102,6 +102,18 @@
       </if>
     </where>
   </select>
+  <select id="selectByWorkIdAndActivityId" resultMap="BaseResultMap" parameterType="map">
+    select <include refid="Base_Column_List"/>
+    from t_work_log
+    <where>
+      <if test="openId !=''and openId !=null">
+        and wx_openid = #{openId,jdbcType=VARCHAR}
+      </if>
+      <if test="activityId !=''and activityId !=null">
+        and activity_id = #{activityId,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
   <select id="selectByWorkId" resultMap="BaseResultMap" parameterType="map">
     select <include refid="Base_Column_List"/>
     from t_work_log

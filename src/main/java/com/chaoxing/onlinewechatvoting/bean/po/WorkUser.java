@@ -1,12 +1,14 @@
 package com.chaoxing.onlinewechatvoting.bean.po;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class WorkUser {
     private Integer id;
 
     private String name;
-
+    @DateTimeFormat(pattern = "yyyy-MM")
     private Date age;
 
     private String school;

@@ -66,6 +66,7 @@ public class HttpUtil {
 
         }
         if(resoult!=null){
+            log.info("HttpUtil.doGet:url:{},resoult:{}",url,resoult);
             return  ServerResponse.createBySuccess(resoult,"请求成功"+url);
         }
         return ServerResponse.createByErrorMessage("获取失败"+url);

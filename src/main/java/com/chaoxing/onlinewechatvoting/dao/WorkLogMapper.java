@@ -20,5 +20,7 @@ public interface WorkLogMapper {
 
     List<WorkLog> selectByWorkIdAndOpenId(@Param("openId") String openId, @Param("workId") Integer workId);
 
+    List<WorkLog> selectByWorkIdAndActivityId(@Param("openId") String openId, @Param("activityId") Integer activityId);
+
     List<WorkLog> selectByWorkId(@Param("workId") Integer workId);
 }

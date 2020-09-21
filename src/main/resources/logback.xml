@@ -2,6 +2,7 @@
 <configuration>
     <!-- 日志存放路径 -->
 	<property name="log.path" value="E:/ideaProject/onlinewechatvoting/log/" />
+<!--	<property name="log.path" value="/home/chaoxing/jdzswhg_vote/apache-tomcat-9.0.37/log/" />-->
     <!-- 日志输出格式 -->
 	<property name="log.pattern" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{20} - [%method,%line] - %msg%n" />
 
