@@ -4,6 +4,7 @@ import com.chaoxing.onlinewechatvoting.bean.po.Activity;
 import com.chaoxing.onlinewechatvoting.bean.vo.PageVO;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 import com.chaoxing.onlinewechatvoting.config.VaidParam.ParamsNotNull;
+import com.chaoxing.onlinewechatvoting.security.UserLoginToken;
 import com.chaoxing.onlinewechatvoting.service.Activity.IactivityService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -50,7 +51,7 @@ public class ActivityController {
 
                 ;
     }
-
+//    @UserLoginToken
     @ApiOperation("投票活动添加")
     @PostMapping("add")
     public ServerResponse<String> add(Activity activity){

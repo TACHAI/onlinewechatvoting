@@ -47,21 +47,20 @@ public class WorkLogServiceImpl implements IworkLogService {
         //1 已投票判断
         List<WorkLog> list = workLogMapper.selectByWorkIdAndActivityId(openid,workLog.getActivityId());
         for(int i=0;i<list.size();i++){
-            if(temp.equals(threshold)){
-                return ServerResponse.createByErrorMessage("该用户今天已经投过票了，请勿再投");
-            }
+
             if(DateUtil.checkNow(list.get(i).getCreateTime())){
                 temp++;
             }
+            if(temp.equals(threshold)){
+                return ServerResponse.createByErrorMessage("该用户今天已经投过票了，请勿再投");
+            }
         }
-
-
 
         workLog.setCreateTime(new Date());
         int res = workLogMapper.insert(workLog);
         if (res>0){
-            return ServerResponse.createBySuccessMessage(ResponseString.ADD_SUCCESS);
+            return ServerResponse.createBySuccessMessage("投票成功");
         }
-        return ServerResponse.createByErrorMessage(ResponseString.ADD_FAIL);
+        return ServerResponse.createByErrorMessage("投票失败");
     }
 }
