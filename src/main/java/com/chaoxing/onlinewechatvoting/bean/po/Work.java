@@ -34,6 +34,10 @@ public class Work {
 
     private Integer activityType;
 
+    //审核消息
+    private String message;
+
+
     public Integer getId() {
         return id;
     }
@@ -144,5 +148,13 @@ public class Work {
 
     public void setActivityType(Integer activityType) {
         this.activityType = activityType;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

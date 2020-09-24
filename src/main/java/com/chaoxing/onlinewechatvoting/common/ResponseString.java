@@ -48,5 +48,9 @@ public class ResponseString {
      * 未删除
      */
     public static final Integer UN_DELETE = 0;
+    /**
+     *
+     */
+    public static final Integer UN_REVIEWED = 2;
 
 }

@@ -1,15 +1,20 @@
 package com.chaoxing.onlinewechatvoting.service.WechatUser.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.chaoxing.onlinewechatvoting.bean.po.Activity;
 import com.chaoxing.onlinewechatvoting.bean.po.WechatToken;
 import com.chaoxing.onlinewechatvoting.bean.po.WechatUser;
+import com.chaoxing.onlinewechatvoting.bean.po.Work;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
+import com.chaoxing.onlinewechatvoting.dao.ActivityMapper;
 import com.chaoxing.onlinewechatvoting.dao.WechatTokenMapper;
 import com.chaoxing.onlinewechatvoting.dao.WechatUserMapper;
+import com.chaoxing.onlinewechatvoting.dao.WorkMapper;
 import com.chaoxing.onlinewechatvoting.service.WechatUser.IwechatUserService;
 import com.chaoxing.onlinewechatvoting.utils.DateUtil;
 import com.chaoxing.onlinewechatvoting.utils.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -29,6 +34,7 @@ import java.util.Map;
 public class WechatUserServiceImpl implements IwechatUserService {
     private static String APPID;
     private static String APPSECRET;
+    private static String TEMPLATEID;
 
     @Autowired
     private WechatTokenMapper wechatTokenMapper;
@@ -43,8 +49,17 @@ public class WechatUserServiceImpl implements IwechatUserService {
         WechatUserServiceImpl.APPSECRET=APPSECRET;
     }
 
+    @Value("${wechat.TEMPLATEID}")
+    public void setTemplateId(String TEMPLATEID){
+        WechatUserServiceImpl.TEMPLATEID=TEMPLATEID;
+    }
+
     @Autowired
     private WechatUserMapper wechatUserMapper;
+    @Autowired
+    private WorkMapper workMapper;
+    @Autowired
+    private ActivityMapper activityMapper;
 
     @Override
     public ServerResponse<WechatUser> getWxUser(String code) {
@@ -88,6 +103,51 @@ public class WechatUserServiceImpl implements IwechatUserService {
 
         }
         return ServerResponse.createByErrorMessage("发生了错误：");
+    }
+
+    //
+    @Override
+    public ServerResponse<String> postMessage(Integer workId,String openid, String msg) {
+        String access_token = getBaseToken();
+        Work work = workMapper.selectByPrimaryKey(workId);
+        Activity activity = activityMapper.selectByPrimaryKey(work.getActivityId());
+        // https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN
+        String url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token="+access_token;
+
+        // 构造模板消息
+        Map<String,Object> map = new HashMap<>();
+        map.put("touser",openid);
+        map.put("template_id",TEMPLATEID);
+        Map<String,Object> data=new HashMap<> ();
+        Map<String,String> first=new HashMap<> ();
+        first.put("value","作品审核未通过通知");
+        data.put("first",first);
+        //keyword1 :活动名称
+        Map<String,String> keyword1=new HashMap<> ();
+        keyword1.put("value", activity.getName());
+        data.put("keyword1",keyword1);
+        //keyword2 :作品名称
+        Map<String,String> keyword2=new HashMap<> ();
+        String workName = work.getAuthor()+"的视频";
+        if(StringUtils.isNotBlank(work.getName())){
+            workName=work.getName();
+        }
+        keyword2.put("value",workName);
+        data.put("keyword2",keyword2);
+
+        Map<String,String> remark=new HashMap<> ();
+        remark.put("value", "欢迎修改后提交");
+        data.put("remark",remark);
+
+        map.put("data",data);
+
+        String jsonStr = JSONObject.toJSONString(map);
+        Integer status = HttpUtil.doPost(url,jsonStr).getStatus();
+        if(status==200){
+            work.setMessage(msg);
+            workMapper.updateByPrimaryKeySelective(work);
+        }
+        return HttpUtil.doPost(url,jsonStr);
     }
 
 
@@ -138,10 +198,31 @@ public class WechatUserServiceImpl implements IwechatUserService {
     }
 
 //    public static void main(String[] args) {
-//        String date = "2020-09-21 08:56:00";
-//        Date  date1 = DateUtil.strToDate(date,DateUtil.DEFAULT_FORMAT);
+//        // 构造模板消息
+//        Map<String,Object> map = new HashMap<>();
+//        map.put("touser","OPENID");
+//        // todo template_id
+//        map.put("template_id","ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY");
+//        Map<String,Object> data=new HashMap<> ();
+//        Map<String,String> first=new HashMap<> ();
+//        first.put("value","作品审核未通过通知");
+//        data.put("first",first);
+//        //keyword1 :活动名称
+//        Map<String,String> keyword1=new HashMap<> ();
+//        keyword1.put("value", "喜迎中秋-国庆");
+//        data.put("keyword1",keyword1);
+//        //keyword2 :作品名称
+//        Map<String,String> keyword2=new HashMap<> ();
+//        keyword2.put("value","张三的作品");
+//        data.put("keyword2",keyword2);
+//        Map<String,String> remark=new HashMap<> ();
+//        remark.put("value", "欢迎修改后提交");
+//        data.put("remark",remark);
 //
-//        System.out.println(checkExpire(date1));
+//        map.put("data",data);
+//
+//        String jsonStr = JSONObject.toJSONString(map);
+//        System.out.println(jsonStr);
 //    }
 }
 

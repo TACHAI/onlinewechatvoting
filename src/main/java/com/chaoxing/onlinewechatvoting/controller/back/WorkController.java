@@ -4,6 +4,7 @@ import com.chaoxing.onlinewechatvoting.bean.po.Work;
 import com.chaoxing.onlinewechatvoting.bean.vo.PageVO;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 import com.chaoxing.onlinewechatvoting.config.VaidParam.ParamsNotNull;
+import com.chaoxing.onlinewechatvoting.service.WechatUser.IwechatUserService;
 import com.chaoxing.onlinewechatvoting.service.work.IworkService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -27,6 +28,8 @@ public class WorkController {
 
     @Autowired
     private IworkService workService;
+    @Autowired
+    private IwechatUserService wechatUserService;
 
     @ApiOperation("后端投票活动分页")
     @GetMapping("listByPage")
@@ -76,4 +79,13 @@ public class WorkController {
         return workService.status(id);
     }
 
+    @ApiOperation("作品审核")
+    @GetMapping("review")
+    public ServerResponse<String> review(@ParamsNotNull Integer id,String openid,String msg,@ParamsNotNull Integer status){
+        if(status!=0){
+            // 审核不通过发送微信通知
+            wechatUserService.postMessage(id,openid,msg);
+        }
+        return  workService.review(id,status);
+    }
 }

@@ -14,4 +14,6 @@ public interface IwechatUserService {
     ServerResponse<WechatUser> getWxUser(String code);
     // 查询是否关注公众号
     ServerResponse<String> checkAttention(String openid);
+    // 发送微信模板消息
+    ServerResponse<String> postMessage(Integer workId,String openid,String msg);
 }

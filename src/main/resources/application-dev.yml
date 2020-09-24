@@ -82,9 +82,13 @@ file:
 fore:
   path: /static
 
+#  每天投票的票数
+vote:
+  threshold: 1
 
-
-# 微信页面
+# 微信页面 需要认证的订阅号/服务号拿 APPID APPSECRET ,同时设置微信网页授权
 wechat:
   APPID: 111111111111
   APPSECRET: 22222222222
+  #微信模板id  用来发送微信通知
+  TEMPLATEID: sdfdsfdfsdf

@@ -14,10 +14,11 @@
     <result column="select_type2" property="selectType2" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="message" property="message" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, image, video, content, author, activity_id, work_user_id, select_type1, 
-    select_type2, create_time,status
+    select_type2, create_time,status,message
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -33,11 +34,11 @@
     insert into t_work (id, name, image, 
       video, content, author, 
       activity_id, work_user_id, select_type1, 
-      select_type2, create_time,status)
+      select_type2, create_time,status,message)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
       #{video,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
       #{activityId,jdbcType=INTEGER}, #{workUserId,jdbcType=INTEGER}, #{selectType1,jdbcType=INTEGER}, 
-      #{selectType2,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},#{status,jdbcType=INTEGER})
+      #{selectType2,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},#{status,jdbcType=INTEGER},#{message,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.chaoxing.onlinewechatvoting.bean.po.Work" >
     insert into t_work
@@ -78,6 +79,9 @@
       <if test="status != null" >
         status,
       </if>
+      <if test="message != null">
+        message,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -116,6 +120,9 @@
       <if test="status != null" >
         #{status,jdbcType=INTEGER}
       </if>
+      <if test="message !=null">
+        #{message,jdbcType=VARCHAR}
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.chaoxing.onlinewechatvoting.bean.po.Work" >
@@ -152,7 +159,10 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=INTEGER}
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR}
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -169,7 +179,8 @@
       select_type1 = #{selectType1,jdbcType=INTEGER},
       select_type2 = #{selectType2,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      status = #{status,jdbcType=INTEGER}
+      status = #{status,jdbcType=INTEGER},
+      message = #{message,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="list" resultMap="BaseResultMap" parameterType="map">

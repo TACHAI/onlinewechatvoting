@@ -29,5 +29,7 @@ public interface IworkService {
 
     ServerResponse<String> status(Integer id);
 
+    ServerResponse<String> review(Integer id,Integer status);
+
     List<WorkVO> listByActivityId(Integer activityId);
 }
