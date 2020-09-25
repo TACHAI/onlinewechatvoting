@@ -1,6 +1,7 @@
 package com.chaoxing.onlinewechatvoting.service.work;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Work;
+import com.chaoxing.onlinewechatvoting.bean.vo.BackWorkVO;
 import com.chaoxing.onlinewechatvoting.bean.vo.WorkVO;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 
@@ -25,7 +26,7 @@ public interface IworkService {
 
     ServerResponse<List<Work>> listFore(Integer activityId,Integer selectType1,Integer selectType2);
 
-    ServerResponse<List<Work>> list(Integer activityId,Integer selectType1,Integer selectType2);
+    ServerResponse<List<BackWorkVO>> list(Integer activityId, Integer selectType1, Integer selectType2);
 
     ServerResponse<String> status(Integer id);
 

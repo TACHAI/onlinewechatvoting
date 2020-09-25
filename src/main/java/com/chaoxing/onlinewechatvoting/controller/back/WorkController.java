@@ -1,6 +1,7 @@
 package com.chaoxing.onlinewechatvoting.controller.back;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Work;
+import com.chaoxing.onlinewechatvoting.bean.vo.BackWorkVO;
 import com.chaoxing.onlinewechatvoting.bean.vo.PageVO;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 import com.chaoxing.onlinewechatvoting.config.VaidParam.ParamsNotNull;
@@ -37,7 +38,7 @@ public class WorkController {
 
         Page page = PageHelper.startPage(pageNumber,pageSize);
         //recommend 100是banner 推荐200
-        List<Work> list =  workService.list(activityId,selectType1,selectType2).getData();
+        List<BackWorkVO> list =  workService.list(activityId,selectType1,selectType2).getData();
         if(list !=null){
             Long total = page.getTotal();
             PageVO p =new PageVO();

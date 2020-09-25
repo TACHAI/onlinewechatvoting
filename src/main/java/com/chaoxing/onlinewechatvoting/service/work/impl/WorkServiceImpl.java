@@ -4,12 +4,15 @@ import	java.io.IOException;
 import com.chaoxing.onlinewechatvoting.bean.po.Activity;
 import com.chaoxing.onlinewechatvoting.bean.po.Work;
 import com.chaoxing.onlinewechatvoting.bean.po.WorkLog;
+import com.chaoxing.onlinewechatvoting.bean.po.WorkUser;
+import com.chaoxing.onlinewechatvoting.bean.vo.BackWorkVO;
 import com.chaoxing.onlinewechatvoting.bean.vo.WorkVO;
 import com.chaoxing.onlinewechatvoting.common.ResponseString;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 import com.chaoxing.onlinewechatvoting.dao.ActivityMapper;
 import com.chaoxing.onlinewechatvoting.dao.WorkLogMapper;
 import com.chaoxing.onlinewechatvoting.dao.WorkMapper;
+import com.chaoxing.onlinewechatvoting.dao.WorkUserMapper;
 import com.chaoxing.onlinewechatvoting.service.work.IworkService;
 import com.chaoxing.onlinewechatvoting.utils.VideoUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +42,8 @@ public class WorkServiceImpl implements IworkService {
     private WorkLogMapper workLogMapper;
     @Autowired
     private ActivityMapper activityMapper;
+    @Autowired
+    private WorkUserMapper workUserMapper;
 
     @Override
     public ServerResponse<String> add(Work work) {
@@ -118,8 +123,9 @@ public class WorkServiceImpl implements IworkService {
         return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);    }
 
     @Override
-    public ServerResponse<List<Work>> list(Integer activityId, Integer selectType1, Integer selectType2) {
+    public ServerResponse<List<BackWorkVO>> list(Integer activityId, Integer selectType1, Integer selectType2) {
         List<Work> list = workMapper.list(activityId,selectType1,selectType2);
+        List<BackWorkVO> backWorkVOS = new ArrayList<> ();
         if(list != null&&list.size()>0){
             for(int i=0;i<list.size();i++){
                 Work work = list.get(i);
@@ -127,8 +133,15 @@ public class WorkServiceImpl implements IworkService {
                 if(logList!=null){
                     work.setVotes(logList.size());
                 }
+                BackWorkVO backWorkVO = new BackWorkVO();
+                BeanUtils.copyProperties(work,backWorkVO);
+                WorkUser workUser = workUserMapper.selectByPrimaryKey(work.getWorkUserId());
+                if(null != workUser&&null != workUser.getPhone()){
+                    backWorkVO.setPhone(workUser.getPhone());
+                }
+                backWorkVOS.add(backWorkVO);
             }
-            return ServerResponse.createBySuccess(list);
+            return ServerResponse.createBySuccess(backWorkVOS);
         }
         return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);
     }

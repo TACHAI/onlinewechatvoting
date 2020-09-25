@@ -25,7 +25,7 @@
     delete from t_work_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.chaoxing.onlinewechatvoting.bean.po.WorkUser" >
+  <insert id="insert" parameterType="com.chaoxing.onlinewechatvoting.bean.po.WorkUser" useGeneratedKeys="true" keyProperty="id">
     insert into t_work_user (id, name, age, 
       school, openid, phone, 
       create_time,nation,image)

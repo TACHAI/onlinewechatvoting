@@ -28,7 +28,7 @@ public class WorkUserServiceImpl implements IworkUserService {
         workUser.setCreateTime(new Date());
         int res = workUserMapper.insert(workUser);
         if(res>0){
-            return ServerResponse.createBySuccessMessage(ResponseString.ADD_SUCCESS);
+            return ServerResponse.createBySuccess(workUser.getId()+"");
         }
         return ServerResponse.createByErrorMessage(ResponseString.ADD_FAIL);
     }
