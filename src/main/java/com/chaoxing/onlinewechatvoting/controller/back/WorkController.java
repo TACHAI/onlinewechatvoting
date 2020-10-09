@@ -7,6 +7,7 @@ import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 import com.chaoxing.onlinewechatvoting.config.VaidParam.ParamsNotNull;
 import com.chaoxing.onlinewechatvoting.service.WechatUser.IwechatUserService;
 import com.chaoxing.onlinewechatvoting.service.work.IworkService;
+import com.chaoxing.onlinewechatvoting.utils.FileUtil;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import io.swagger.annotations.Api;
@@ -14,6 +15,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -32,7 +35,7 @@ public class WorkController {
     @Autowired
     private IwechatUserService wechatUserService;
 
-    @ApiOperation("后端投票活动分页")
+    @ApiOperation("后端投票作品分页")
     @GetMapping("listByPage")
     public PageVO list(@RequestParam(value = "pageSize",defaultValue = "5")int pageSize, @RequestParam(value = "pageNumber",defaultValue = "1")int pageNumber,Integer activityId,Integer selectType1,Integer selectType2){
 
@@ -49,6 +52,12 @@ public class WorkController {
         return null;
     }
 
+    @ApiOperation("导出报名作品花名册excel")
+    @GetMapping(value="/exportExcel")
+    public void exportExcelUser(Integer activityId,Integer selectType1,Integer selectType2, HttpServletResponse res) {
+        File file = workService.createExcelFile(activityId,selectType1,selectType2);
+        FileUtil.downloadFile(res, file, file.getName());
+    }
 
     @ApiOperation("作品添加")
     @PostMapping("add")

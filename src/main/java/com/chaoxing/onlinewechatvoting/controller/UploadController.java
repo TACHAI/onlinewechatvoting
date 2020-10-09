@@ -7,10 +7,7 @@ import com.chaoxing.onlinewechatvoting.common.cons.FileType;
 import com.chaoxing.onlinewechatvoting.utils.FileUtil;
 import io.swagger.annotations.Api;
 import org.springframework.http.HttpRequest;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -26,6 +23,7 @@ import java.util.Map;
  * @Email tc1206966083@gmail.com
  * @Date 2019-06-11 10:46
  **/
+@CrossOrigin
 @RestController
 @RequestMapping("/api/upload/")
 @Api(value="上传模块",tags = {"上传接口"})

@@ -27,7 +27,7 @@ public class Work {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    // 0是下架1是上架 2是未审核
+    // 0是上架1是下架 2是未审核
     private Integer status;
     // 票数
     private Integer votes;

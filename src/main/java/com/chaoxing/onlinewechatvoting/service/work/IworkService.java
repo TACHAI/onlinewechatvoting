@@ -5,6 +5,7 @@ import com.chaoxing.onlinewechatvoting.bean.vo.BackWorkVO;
 import com.chaoxing.onlinewechatvoting.bean.vo.WorkVO;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -33,4 +34,6 @@ public interface IworkService {
     ServerResponse<String> review(Integer id,Integer status);
 
     List<WorkVO> listByActivityId(Integer activityId);
+
+    File createExcelFile(Integer activityId, Integer selectType1, Integer selectType2);
 }
