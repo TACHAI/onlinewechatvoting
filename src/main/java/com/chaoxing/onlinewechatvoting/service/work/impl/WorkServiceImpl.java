@@ -236,12 +236,11 @@ public class WorkServiceImpl implements IworkService {
         row0.createCell(++columnIndex).setCellValue("用户名");
         row0.createCell(++columnIndex).setCellValue("手机号");
         row0.createCell(++columnIndex).setCellValue("票数");
-        row0.createCell(++columnIndex).setCellValue("群体名单");
         row0.createCell(++columnIndex).setCellValue("类型");
         row0.createCell(++columnIndex).setCellValue("年龄组别");
         row0.createCell(++columnIndex).setCellValue("装态");
-        row0.createCell(++columnIndex).setCellValue("群体名单");
-        row0.createCell(++columnIndex).setCellValue("报名时间");
+        row0.createCell(++columnIndex).setCellValue("表演者名单");
+        row0.createCell(++columnIndex).setCellValue("作品上传时间");
         for(int i=0;i<list.size();i++){
             BackWorkVO work = (BackWorkVO) list.get(i);
             Row row = sheet.createRow(i+1);
@@ -254,7 +253,6 @@ public class WorkServiceImpl implements IworkService {
             row.getCell(++columnIndex).setCellValue(work.getAuthor());
             row.getCell(++columnIndex).setCellValue(work.getPhone());
             row.getCell(++columnIndex).setCellValue(work.getVotes());
-            row.getCell(++columnIndex).setCellValue(work.getMessage());
             // 设置类型
             if(work.getSelectType1()==5){
                 row.getCell(++columnIndex).setCellValue("朗诵");

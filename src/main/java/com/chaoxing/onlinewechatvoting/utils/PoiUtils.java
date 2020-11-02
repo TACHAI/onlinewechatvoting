@@ -23,7 +23,8 @@ public class PoiUtils {
         File file = null;
         try {
             //用了createTempFile，这是创建临时文件，系统会自动给你的临时文件编号，所以后面有号码，你用createNewFile的话就完全按照你指定的名称来了
-            file = File.createTempFile("111", ".xlsx");
+            //file = File.createTempFile("111", ".xlsx");
+            file = File.createTempFile("111",".xlsx");
             stream = new FileOutputStream(file.getAbsoluteFile());
             workbook.write(stream);
         } catch (FileNotFoundException e) {

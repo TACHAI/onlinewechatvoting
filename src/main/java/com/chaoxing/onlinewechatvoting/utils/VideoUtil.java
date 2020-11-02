@@ -5,6 +5,7 @@ import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;
 import org.bytedeco.javacv.FrameGrabber;
 import org.bytedeco.javacv.Java2DFrameConverter;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -38,7 +39,7 @@ public class VideoUtil {
      * @throws IOException
      */
     public static String getImage(String moviePath) throws FrameGrabber.Exception, IOException {
-        String imagePath = moviePath.split("\\.")[0]+".jpg";
+        String imagePath = moviePath.split("\\.")[0]+ DateTime.now().toString() +".jpg";
         File targetFile = new File(localDir+imagePath.replace("/static",""));
         log.info("VideoUtil.getImage:targetFile:{}",targetFile);
         File fileParent = targetFile.getParentFile();

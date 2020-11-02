@@ -165,7 +165,10 @@ public class WechatUserServiceImpl implements IwechatUserService {
 
         JSONObject jsonObject = JSONObject.parseObject(tokenRes);
         String access_token = jsonObject.getString("access_token");
-
+        // 更新token
+        tokenPO.setUpdateTime(new Date());
+        tokenPO.setToken(access_token);
+        wechatTokenMapper.updateByPrimaryKeySelective(tokenPO);
         return access_token;
     }
 
@@ -201,7 +204,6 @@ public class WechatUserServiceImpl implements IwechatUserService {
 //        // 构造模板消息
 //        Map<String,Object> map = new HashMap<>();
 //        map.put("touser","OPENID");
-//        // todo template_id
 //        map.put("template_id","ngqIpbwh8bUfcSsECmogfXcV14J0tQlEpBO27izEYtY");
 //        Map<String,Object> data=new HashMap<> ();
 //        Map<String,String> first=new HashMap<> ();

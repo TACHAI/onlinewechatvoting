@@ -61,7 +61,6 @@ server:
 #  level: debug
 
 logging:
-  file: catlina.log
   level:
     level: debug
     package com.chaoxing.onlinewechatvoting.dao: info

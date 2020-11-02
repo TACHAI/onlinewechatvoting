@@ -2,10 +2,14 @@ package com.chaoxing.onlinewechatvoting.service.worklog.impl;
 import java.time.LocalDate;
 import	java.time.ZoneId;
 
+import com.chaoxing.onlinewechatvoting.bean.po.Activity;
+import com.chaoxing.onlinewechatvoting.bean.po.Work;
 import com.chaoxing.onlinewechatvoting.bean.po.WorkLog;
 import com.chaoxing.onlinewechatvoting.common.ResponseString;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
+import com.chaoxing.onlinewechatvoting.dao.ActivityMapper;
 import com.chaoxing.onlinewechatvoting.dao.WorkLogMapper;
+import com.chaoxing.onlinewechatvoting.dao.WorkMapper;
 import com.chaoxing.onlinewechatvoting.service.WechatUser.impl.WechatUserServiceImpl;
 import com.chaoxing.onlinewechatvoting.service.worklog.IworkLogService;
 import com.chaoxing.onlinewechatvoting.utils.DateUtil;
@@ -36,6 +40,10 @@ public class WorkLogServiceImpl implements IworkLogService {
 
     @Autowired
     private WorkLogMapper workLogMapper;
+    @Autowired
+    private ActivityMapper activityMapper;
+    @Autowired
+    private WorkMapper workMapper;
 
     @Override
     public ServerResponse<String> add(WorkLog workLog) {
@@ -54,6 +62,19 @@ public class WorkLogServiceImpl implements IworkLogService {
             if(temp.equals(threshold)){
                 return ServerResponse.createByErrorMessage("该用户今天已经投过票了，请勿再投");
             }
+        }
+
+        Date now = new Date();
+        //2 活动过期判断
+        Activity activity = activityMapper.selectByPrimaryKey(workLog.getActivityId());
+        if(activity.getActivityTime().before(now)){
+            return ServerResponse.createByErrorMessage("活动已过期不能投票");
+        }
+
+        //3作品下架判断
+        Work work = workMapper.selectByPrimaryKey(workId);
+        if(ResponseString.IS_DELETE.equals(work.getStatus())){
+            return ServerResponse.createByErrorMessage("作品已下架不能投票");
         }
 
         workLog.setCreateTime(new Date());

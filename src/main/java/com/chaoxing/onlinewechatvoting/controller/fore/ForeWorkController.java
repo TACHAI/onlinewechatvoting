@@ -3,6 +3,7 @@ package com.chaoxing.onlinewechatvoting.controller.fore;
 import com.chaoxing.onlinewechatvoting.bean.po.Work;
 import com.chaoxing.onlinewechatvoting.bean.vo.PageVO;
 import com.chaoxing.onlinewechatvoting.bean.vo.WorkVO;
+import com.chaoxing.onlinewechatvoting.common.ResponseString;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 import com.chaoxing.onlinewechatvoting.config.VaidParam.ParamsNotNull;
 import com.chaoxing.onlinewechatvoting.service.work.IworkService;
@@ -58,6 +59,12 @@ public class ForeWorkController {
     @ApiOperation("作品详情")
     @GetMapping("selectById")
     public ServerResponse<Work> selectById(@ParamsNotNull Integer id){
+        Work work = workService.selectById(id).getData();
+        if(work != null&&work.getStatus()==1){
+            return ServerResponse.createByErrorMessage(ResponseString.DATA_IS_EMPTY);
+        }
+
+
         return workService.selectById(id);
     }
 
