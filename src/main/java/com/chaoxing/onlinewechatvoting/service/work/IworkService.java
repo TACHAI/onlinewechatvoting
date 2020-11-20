@@ -29,7 +29,7 @@ public interface IworkService {
 
     ServerResponse<List<BackWorkVO>> list(Integer activityId, Integer selectType1, Integer selectType2);
 
-    ServerResponse<String> status(Integer id);
+    ServerResponse<String> status(Integer id,Integer status);
 
     ServerResponse<String> review(Integer id,Integer status);
 

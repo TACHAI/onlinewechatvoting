@@ -172,7 +172,7 @@
     from t_activity
     where is_delete=0
     and `status`=0
-    and activity_time <![CDATA[ > ]]> now()
+--     and activity_time <![CDATA[ > ]]> now()
     order by id desc
   </select>
 </mapper>

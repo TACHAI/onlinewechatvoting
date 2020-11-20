@@ -54,7 +54,7 @@ public class WorkServiceImpl implements IworkService {
 
     @Override
     public ServerResponse<String> add(Work work) {
-        work.setStatus(ResponseString.UN_REVIEWED);
+        work.setStatus(ResponseString.IS_DELETE);
         work.setCreateTime(new Date());
         int res = workMapper.insert(work);
         if(res>0){
@@ -154,15 +154,17 @@ public class WorkServiceImpl implements IworkService {
     }
 
     @Override
-    public ServerResponse<String> status(Integer id) {
+    public ServerResponse<String> status(Integer id,Integer status) {
         Work work = workMapper.selectByPrimaryKey(id);
         if(work== null){
             return ServerResponse.createByErrorMessage(ResponseString.PARAMS_IS_EMPTY);
         }
-        if(1==work.getStatus()){
-            work.setStatus(ResponseString.UN_DELETE);
-        }else {
+        if(1==status){
             work.setStatus(ResponseString.IS_DELETE);
+        }else if(2==status) {
+            work.setStatus(ResponseString.UN_REVIEWED);
+        }else if(0==status) {
+            work.setStatus(ResponseString.UN_DELETE);
         }
         workMapper.updateByPrimaryKeySelective(work);
         return ServerResponse.createBySuccessMessage(ResponseString.UPDATE_SUCCESS);

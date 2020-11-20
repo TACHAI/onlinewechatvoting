@@ -203,7 +203,7 @@
     select <include refid="Base_Column_List"/>
     from t_work
     <where>
-      status=0
+      (status=0 or  status=2)
       <if test="activityId !=''and activityId !=null">
         and activity_id=#{activityId,jdbcType=INTEGER}
       </if>

@@ -85,8 +85,8 @@ public class WorkController {
 
     @ApiOperation("作品上下架")
     @GetMapping("status")
-    public ServerResponse<String> status(@ParamsNotNull Integer id){
-        return workService.status(id);
+    public ServerResponse<String> status(@ParamsNotNull Integer id,Integer status){
+        return workService.status(id,status);
     }
 
     @ApiOperation("作品审核")

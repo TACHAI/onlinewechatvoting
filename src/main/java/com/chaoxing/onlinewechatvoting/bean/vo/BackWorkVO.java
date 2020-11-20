@@ -10,7 +10,10 @@ import lombok.Data;
  * @Date 2020-09-25 11:46
  */
 @Data
-public class BackWorkVO extends Work {
+public class
+
+
+BackWorkVO extends Work {
 
     private String phone;
 }
