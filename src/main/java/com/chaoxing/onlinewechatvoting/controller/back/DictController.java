@@ -1,6 +1,7 @@
 package com.chaoxing.onlinewechatvoting.controller.back;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Dict;
+import com.chaoxing.onlinewechatvoting.bean.vo.DictVO;
 import com.chaoxing.onlinewechatvoting.bean.vo.PageVO;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 import com.chaoxing.onlinewechatvoting.config.VaidParam.ParamsNotNull;
@@ -45,6 +46,13 @@ public class DictController {
             return p;
         }
         return null;
+    }
+
+
+    @ApiOperation("树状字典")
+    @GetMapping("tireDict")
+    public ServerResponse<List<DictVO>> listDictVo(){
+        return dictService.listDictVo();
     }
 
     @ApiOperation("字典添加")

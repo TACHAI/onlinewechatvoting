@@ -1,6 +1,7 @@
 package com.chaoxing.onlinewechatvoting.service.dict;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Dict;
+import com.chaoxing.onlinewechatvoting.bean.vo.DictVO;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 
 import java.util.List;
@@ -22,4 +23,7 @@ public interface IdictService {
     ServerResponse<List<Dict>> selectByType(Integer type);
 
     ServerResponse<List<Dict>> list(String typeName);
+    ServerResponse<List<Dict>> listType();
+
+    ServerResponse<List<DictVO>> listDictVo();
 }

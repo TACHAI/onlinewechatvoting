@@ -21,4 +21,8 @@ public interface DictMapper {
     List<Dict> selectByType(@Param("type") Integer type);
 
     List<Dict> list(@Param("typeName") String typeName);
+
+    List<Dict> listType();
+
+    List<Dict> selectAll();
 }

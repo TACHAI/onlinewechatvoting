@@ -86,6 +86,12 @@ public class WorkServiceImpl implements IworkService {
     public ServerResponse<String> deleteById(Integer id) {
         int res = workMapper.deleteByPrimaryKey(id);
         if(res>0){
+
+            // 删除日志
+            List<WorkLog> list = workLogMapper.selectByWorkId(id);
+            list.forEach(e->{
+                workLogMapper.deleteByPrimaryKey(e.getId());
+            });
             return ServerResponse.createBySuccessMessage(ResponseString.DELETE_SUCCESS);
         }
         return ServerResponse.createByErrorMessage(ResponseString.DELETE_FAIL);

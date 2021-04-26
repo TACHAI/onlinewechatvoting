@@ -1,6 +1,7 @@
 package com.chaoxing.onlinewechatvoting.dao;
 
 import com.chaoxing.onlinewechatvoting.bean.po.WorkLog;
+import com.chaoxing.onlinewechatvoting.bean.vo.OptionVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -23,4 +24,8 @@ public interface WorkLogMapper {
     List<WorkLog> selectByWorkIdAndActivityId(@Param("openId") String openId, @Param("activityId") Integer activityId);
 
     List<WorkLog> selectByWorkId(@Param("workId") Integer workId);
+
+    List<OptionVO> siteList();
+
+    List<OptionVO> areaList();
 }

@@ -5,6 +5,7 @@ import	java.time.ZoneId;
 import com.chaoxing.onlinewechatvoting.bean.po.Activity;
 import com.chaoxing.onlinewechatvoting.bean.po.Work;
 import com.chaoxing.onlinewechatvoting.bean.po.WorkLog;
+import com.chaoxing.onlinewechatvoting.bean.vo.OptionVO;
 import com.chaoxing.onlinewechatvoting.common.ResponseString;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 import com.chaoxing.onlinewechatvoting.dao.ActivityMapper;
@@ -83,5 +84,17 @@ public class WorkLogServiceImpl implements IworkLogService {
             return ServerResponse.createBySuccessMessage("投票成功");
         }
         return ServerResponse.createByErrorMessage("投票失败");
+    }
+
+    @Override
+    public ServerResponse<List<OptionVO>> areaList() {
+        List<OptionVO> list =  workLogMapper.areaList();
+        return ServerResponse.createBySuccess(list);
+    }
+
+    @Override
+    public ServerResponse<List<OptionVO>> siteList() {
+        List<OptionVO> list =  workLogMapper.siteList();
+        return ServerResponse.createBySuccess(list);
     }
 }

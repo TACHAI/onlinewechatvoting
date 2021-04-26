@@ -123,4 +123,11 @@
       </if>
     </where>
   </select>
+  <select id="areaList" parameterType="map" resultType="com.chaoxing.onlinewechatvoting.bean.vo.OptionVO">
+    select d.name as name,count(l.id) as votes from t_work w LEFT JOIN t_work_log l  on w.id =l.work_id left join t_dict d  on  d.id= w.select_type1  where d.name is not null GROUP BY w.select_type1 ORDER BY votes desc;
+
+  </select>
+  <select id="siteList" parameterType="map" resultType="com.chaoxing.onlinewechatvoting.bean.vo.OptionVO">
+    select d.name as name ,count(l.id) as votes from t_work w LEFT JOIN t_work_log l  on w.id =l.work_id left join t_dict d   on d.id= w.select_type2 where d.name is not null GROUP BY w.select_type2 ORDER BY votes desc;
+  </select>
 </mapper>

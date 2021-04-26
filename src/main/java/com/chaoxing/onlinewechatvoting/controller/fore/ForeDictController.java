@@ -1,6 +1,7 @@
 package com.chaoxing.onlinewechatvoting.controller.fore;
 
 import com.chaoxing.onlinewechatvoting.bean.po.Dict;
+import com.chaoxing.onlinewechatvoting.bean.vo.DictVO;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 import com.chaoxing.onlinewechatvoting.config.VaidParam.ParamsNotNull;
 import com.chaoxing.onlinewechatvoting.service.dict.IdictService;
@@ -31,4 +32,18 @@ public class ForeDictController {
     public ServerResponse<List<Dict>> selectByType(@ParamsNotNull Integer type){
         return dictService.selectByType(type);
     }
+
+    @ApiOperation("查询类型列表")
+    @GetMapping("listType")
+    public ServerResponse<List<Dict>> listType(){
+        return dictService.listType();
+    }
+
+
+    @ApiOperation("树状字典")
+    @GetMapping("tireDict")
+    public ServerResponse<List<DictVO>> listDictVo(){
+        return dictService.listDictVo();
+    }
+
 }

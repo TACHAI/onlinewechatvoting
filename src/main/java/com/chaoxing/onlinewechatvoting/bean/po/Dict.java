@@ -12,6 +12,8 @@ public class Dict {
 
     private Integer value;
 
+    private Integer pid;
+
     public Integer getId() {
         return id;
     }
@@ -50,5 +52,13 @@ public class Dict {
 
     public void setValue(Integer value) {
         this.value = value;
+    }
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
     }
 }
