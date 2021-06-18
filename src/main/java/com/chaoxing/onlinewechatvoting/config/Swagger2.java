@@ -1,5 +1,6 @@
 package com.chaoxing.onlinewechatvoting.config;
 
+import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +24,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @EnableConfigurationProperties(SwaggerSettings.class)
+@EnableKnife4j
 public class Swagger2 {
 
     @Autowired

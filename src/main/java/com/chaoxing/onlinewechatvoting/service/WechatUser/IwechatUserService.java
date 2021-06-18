@@ -3,6 +3,8 @@ package com.chaoxing.onlinewechatvoting.service.WechatUser;
 import com.chaoxing.onlinewechatvoting.bean.po.WechatUser;
 import com.chaoxing.onlinewechatvoting.common.ServerResponse;
 
+import java.util.Map;
+
 /**
  * @ClassName IwechatUserService
  * @Author https://github.com/TACHAI
@@ -16,4 +18,6 @@ public interface IwechatUserService {
     ServerResponse<String> checkAttention(String openid);
     // 发送微信模板消息
     ServerResponse<String> postMessage(Integer workId,String openid,String msg);
+
+    Map<String, String> getSignature(String url);
 }

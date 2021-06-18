@@ -77,6 +77,11 @@ public class WorkLogServiceImpl implements IworkLogService {
         if(ResponseString.IS_DELETE.equals(work.getStatus())){
             return ServerResponse.createByErrorMessage("作品已下架不能投票");
         }
+        //4作品不能投票判断
+        if(2==work.getStatus()){
+            return ServerResponse.createByErrorMessage("作品不能投票");
+        }
+
 
         workLog.setCreateTime(new Date());
         int res = workLogMapper.insert(workLog);

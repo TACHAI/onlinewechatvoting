@@ -11,17 +11,28 @@ import com.chaoxing.onlinewechatvoting.dao.WechatTokenMapper;
 import com.chaoxing.onlinewechatvoting.dao.WechatUserMapper;
 import com.chaoxing.onlinewechatvoting.dao.WorkMapper;
 import com.chaoxing.onlinewechatvoting.service.WechatUser.IwechatUserService;
-import com.chaoxing.onlinewechatvoting.utils.DateUtil;
 import com.chaoxing.onlinewechatvoting.utils.HttpUtil;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @ClassName WechatUserServiceImpl
@@ -32,12 +43,21 @@ import java.util.Map;
 @Slf4j
 @Service("iwechatUserService")
 public class WechatUserServiceImpl implements IwechatUserService {
+
+
+    @Autowired
+    private WechatTokenMapper wechatTokenMapper;
+    @Autowired
+    private WechatUserMapper wechatUserMapper;
+    @Autowired
+    private WorkMapper workMapper;
+    @Autowired
+    private ActivityMapper activityMapper;
+
     private static String APPID;
     private static String APPSECRET;
     private static String TEMPLATEID;
 
-    @Autowired
-    private WechatTokenMapper wechatTokenMapper;
 
     @Value("${wechat.APPID}")
     public void setAppId(String APPID){
@@ -54,12 +74,9 @@ public class WechatUserServiceImpl implements IwechatUserService {
         WechatUserServiceImpl.TEMPLATEID=TEMPLATEID;
     }
 
-    @Autowired
-    private WechatUserMapper wechatUserMapper;
-    @Autowired
-    private WorkMapper workMapper;
-    @Autowired
-    private ActivityMapper activityMapper;
+    // expire 会过期
+    private static final Map<String,String> ticketEntity=new HashMap<>();
+
 
     @Override
     public ServerResponse<WechatUser> getWxUser(String code) {
@@ -88,6 +105,7 @@ public class WechatUserServiceImpl implements IwechatUserService {
 
     @Override
     public ServerResponse<String> checkAttention(String openid) {
+
         String access_token = getBaseToken();
         if(access_token!=null){
             //https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN
@@ -105,7 +123,7 @@ public class WechatUserServiceImpl implements IwechatUserService {
         return ServerResponse.createByErrorMessage("发生了错误：");
     }
 
-    //
+    /** 发送模板消息**/
     @Override
     public ServerResponse<String> postMessage(Integer workId,String openid, String msg) {
         String access_token = getBaseToken();
@@ -150,8 +168,8 @@ public class WechatUserServiceImpl implements IwechatUserService {
         return HttpUtil.doPost(url,jsonStr);
     }
 
-
-    private String getBaseToken(){
+    /** 获得基础的token**/
+    public  String getBaseToken(){
          WechatToken tokenPO =wechatTokenMapper.selectByPrimaryKey(1);
          if(checkExpire(tokenPO.getUpdateTime())){
              return tokenPO.getToken();
@@ -198,6 +216,134 @@ public class WechatUserServiceImpl implements IwechatUserService {
             return true;
         }
         return false;
+    }
+
+
+    public  String getTicket(){
+        String ticket = "";
+        try {
+            ticket= ticketEntity.get("ticket");
+            if("".equals(ticket)||ticket==null){
+                ticket =getTicketByURL();
+            }
+            String expires = ticketEntity.get("expires_in");
+            // token 过期
+            if(new Date().getTime()>(Long.parseLong(expires)+7000*1000)){
+                ticket = getTicketByURL();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            ticket = getTicketByURL();
+        }
+
+        return ticket;
+    }
+
+
+    // 获取ticket
+    public  String getTicketByURL() {
+        String accessToken = getBaseToken();
+        // 网页授权接口
+        String GetPageAccessTokenUrl = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token="+accessToken+"&type=jsapi";
+        HttpClient client = null;
+        String ticket = "";
+        int expires_in = 0;
+        try {
+            JsonObject jsonObject = doGetStr(GetPageAccessTokenUrl);
+            System.out.println("ticket:"+jsonObject.toString());
+            if(jsonObject!=null){
+                // 取出access_token
+                ticket = jsonObject.get("ticket").getAsString();
+                ticketEntity.put("ticket",ticket);
+                String expires = new Date().getTime()+"";
+                ticketEntity.put("expires_in",expires.substring(0,10));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return ticket;
+    }
+
+
+
+    // 获取Signature
+    @Override
+    public  Map<String,String> getSignature(String url) {
+        String signature = "";
+        //获取noncestr
+        String noncestr = UUID.randomUUID().toString();
+        String timestamp = Long.toString(System.currentTimeMillis() / 1000);
+        //获取jspai_ticket
+        String jsapi_ticket = getTicket();
+        //将四个数据进行组合，传给SHA1进行加密
+        String str = "jsapi_ticket=" + jsapi_ticket +
+                "&noncestr=" + noncestr +
+                "&timestamp=" + timestamp +
+                "&url=" + url;
+
+        //sha1加密
+        signature = SHA1(str);
+
+        Map<String,String> map  = new HashMap<>();
+        map.put("appId",APPID);
+        map.put("timestamp",timestamp);
+        map.put("nonceStr",noncestr);
+        map.put("signature",signature);
+
+        return map;
+    }
+
+
+    public static String SHA1(String str) {
+        try {
+            MessageDigest digest = MessageDigest
+                    .getInstance("SHA-1"); //如果是SHA加密只需要将"SHA-1"改成"SHA"即可
+            digest.update(str.getBytes());
+            byte messageDigest[] = digest.digest();
+            // Create Hex String
+            StringBuffer hexStr = new StringBuffer();
+            // 字节数组转换为 十六进制 数
+            for (int i = 0; i < messageDigest.length; i++) {
+                String shaHex = Integer.toHexString(messageDigest[i] & 0xFF);
+                if (shaHex.length() < 2) {
+                    hexStr.append(0);
+                }
+                hexStr.append(shaHex);
+            }
+            return hexStr.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //从微信后台拿到APPID和APPSECRET 并封装为常量
+    /**
+     * @param url  传入的地址
+     * @return   返回get返回的json对象
+     */
+    private static JsonObject  doGetStr(String url) throws IOException {
+        // 获取defaultHttpClient请求
+        HttpClient client = HttpClients.createDefault();
+        // HttpGet将使用Get方式发送请求URL
+        HttpGet httpGet = new HttpGet(url);
+        JsonObject jsonObject = null;
+        // 使用HttpResponse 接收client 执行httpGet的结果
+        HttpResponse response = client.execute(httpGet);
+        // 从response中获取结果，类型为HttpEntity
+
+
+        HttpEntity entity = response.getEntity();
+        if(entity != null){
+            // httpEntity转为字符串类型
+            String result = EntityUtils.toString(entity,"UTF-8");
+            System.out.println("result:"+result);
+            jsonObject = new Gson().fromJson(result, JsonObject.class);
+            System.out.println("token"+jsonObject.toString());
+
+        }
+        return jsonObject;
     }
 
 //    public static void main(String[] args) {

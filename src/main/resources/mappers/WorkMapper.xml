@@ -197,7 +197,7 @@
         and  select_type2 = #{selectType2,jdbcType=INTEGER}
       </if>
     </where>
-    order by create_time desc
+    order by create_time asc
   </select>
   <select id="listFore" resultMap="BaseResultMap" parameterType="map">
     select <include refid="Base_Column_List"/>
@@ -214,6 +214,6 @@
         and  select_type2 = #{selectType2,jdbcType=INTEGER}
       </if>
     </where>
-    order by create_time desc
+    order by create_time asc
   </select>
 </mapper>
